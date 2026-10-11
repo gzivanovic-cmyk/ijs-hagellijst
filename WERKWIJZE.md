@@ -68,3 +68,10 @@ Past een kantoor niet op het profiel, dan komt het niet in de lijst (of wordt he
 ## 🔒 Privacy en AVG
 - De data op de site is versleuteld (AES-256-GCM), niet vindbaar voor zoekmachines (noindex) en alleen te openen met het wachtwoord.
 - Ga je zelf mailen: let op de AVG en de Telecommunicatiewet. Gebruik zakelijke adressen, een duidelijke afzender en een afmeldlink.
+
+## ✉️ E-mail en mailstatus op de site
+- E-mailadressen komen uit het Notion-veld **E-mail** en staan in de tabel, op de mobiele kaarten en in het detailpaneel (klikbaar als mailto, met kopieerknop). Geen adres = "–".
+- De knop in de kolom **Mail** wisselt tussen *Nog niet* en *Gemaild* (met datum). Omdat de site statisch is, wordt dit opgeslagen in **localStorage van je browser** (sleutel `ijs-mailstatus`, per Notion-rij-id). Andere browsers/apparaten zien deze lokale status niet.
+- Voorrang: een lokale wijziging wint altijd van het Notion-veld **Mailstatus** (Notion heeft geen tijdstempel per wijziging, en een lokale klik is altijd een bewuste, recente actie van Goran). Zonder lokale wijziging toont de site de Notion-status (bijv. Reactie, Demo). Wijkt Notion af van de lokale status, dan staat de Notion-waarde er klein onder.
+- Wil je de status overal hetzelfde hebben: zet hem ook in Notion (Mailstatus). Lokale status wissen = browsergegevens voor deze site wissen.
+- Filter **Mail: gemaild / nog niet** gebruikt dezelfde effectieve status.
