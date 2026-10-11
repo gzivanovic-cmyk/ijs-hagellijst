@@ -69,12 +69,14 @@ Past een kantoor niet op het profiel, dan komt het niet in de lijst (of wordt he
 - De data op de site is versleuteld (AES-256-GCM), niet vindbaar voor zoekmachines (noindex) en alleen te openen met het wachtwoord.
 - Ga je zelf mailen: let op de AVG en de Telecommunicatiewet. Gebruik zakelijke adressen, een duidelijke afzender en een afmeldlink.
 
-## ✉️ E-mail en mailstatus op de site
-- E-mailadressen komen uit het Notion-veld **E-mail** en staan in de tabel, op de mobiele kaarten en in het detailpaneel (klikbaar als mailto, met kopieerknop). Geen adres = "–".
-- De knop in de kolom **Mail** wisselt tussen *Nog niet* en *Gemaild* (met datum). Omdat de site statisch is, wordt dit opgeslagen in **localStorage van je browser** (sleutel `ijs-mailstatus`, per Notion-rij-id). Andere browsers/apparaten zien deze lokale status niet.
-- Voorrang: een lokale wijziging wint altijd van het Notion-veld **Mailstatus** (Notion heeft geen tijdstempel per wijziging, en een lokale klik is altijd een bewuste, recente actie van Goran). Zonder lokale wijziging toont de site de Notion-status (bijv. Reactie, Demo). Wijkt Notion af van de lokale status, dan staat de Notion-waarde er klein onder.
-- Wil je de status overal hetzelfde hebben: zet hem ook in Notion (Mailstatus). Lokale status wissen = browsergegevens voor deze site wissen.
-- Filter **Mail: gemaild / nog niet** gebruikt dezelfde effectieve status.
+## ✉️ E-mail, contactstatus en synchronisatie
+- E-mailadressen (Notion-veld **E-mail**) staan in de tabel, op de mobiele kaarten en in het detailpaneel: klikbaar als mailto, met kopieerknop. Geen adres = "–" of "niet publiek gevonden" als de Verifier dat noteerde. De site verstuurt nooit zelf mail.
+- **Contactstatus** (Notion select: Niet benaderd / Klaar voor contact / Benaderd / Reactie ontvangen / Gesprek gepland / Afgerond) en **Laatst benaderd** (Notion datum) zijn de waarheid en gelden op al Gorans apparaten. Leeg in Notion: de site leidt de status af van het oude veld Mailstatus (Nog niet → Niet benaderd, Gemaild → Benaderd, Reactie → Reactie ontvangen, Demo → Gesprek gepland, Proefaccount/Geen interesse → Afgerond).
+- Prioriteit (kans A/B/C), Status verificatie en Contactstatus zijn drie gescheiden velden.
+- Wijzig je de status op de site, dan verschijnt hij meteen, gemarkeerd als **"lokaal, nog niet gesynct"** (opgeslagen in localStorage `ijs-contactstatus`, alleen in die browser). Onderaan verschijnt **"Kopieer wijzigingen (n)"**: dat kopieert een korte tekst (kantoor, Notion-id, nieuwe status, datum). Stuur die naar je assistent; die werkt Notion bij. Na de volgende sync is Notion gelijk aan de lokale waarde en verdwijnt de markering vanzelf.
+- Er staat bewust **geen Notion-token in de browser**; de site kan Notion dus niet zelf schrijven.
+- Actieknop per rij: Te controleren → *Controleren*; Goedgekeurd en niet benaderd → *Contact voorbereiden* (paneel met e-mail + kopieerknop, verstuurt niets); Benaderd → *Reactie registreren* (lokale status Reactie ontvangen); Afgewezen → *Reden bekijken*.
 - **Volledigheid**: per kantoor een score over 10 kernvelden (Klanten, Software, Aanleiding, Contact, Functie, E-mail, Telefoon, Website, Dienstverlening, Plaats). Filter volledig/onvolledig en KPI "% volledig" (= 10/10). Telefoon telt mee maar is geen tabelkolom.
 - "niet publiek gevonden" verschijnt i.p.v. "–" als de Opmerking verificatie/Vervolgactie dat voor dat veld vermeldt; "schatting" bij klanten als Bron aantal klanten met "schatting" begint.
-- Layout: fluid tot 2400px, geen horizontale scroll; op smallere schermen verdwijnen eerst Aanleiding (<1440px), daarna Klanten/Software/Verificatie/Volledig (<1024px); Website en Dienstverlening alleen vanaf 1600px.
+- Layout: fluid tot 2400px, nooit horizontale scroll. Standaardkolommen: Kantoor, Kans, Aanleiding, Verificatie, Contactpersoon, E-mail, Contactstatus, Volledigheid, Actie; via **Kolommen aanpassen** extra velden (keuze in localStorage `ijs-cols`). Past de tabel niet, dan worden automatisch eerst extra kolommen, dan Aanleiding, Contactpersoon, Volledigheid, Verificatie en E-mail verborgen (staan altijd in het detailpaneel).
+- Detailpaneel rechts (38% breed vanaf 1200px, tabel blijft zichtbaar). Toetsen: Enter opent, ↑/↓ volgende/vorige kantoor, Esc sluit, / zoeken. Schakelaar Compact/Comfortabel (localStorage `ijs-density`).
