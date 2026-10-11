@@ -1,7 +1,7 @@
 # Werkwijze IJS Hagellijst
 
 ## 🎯 Doel
-Alleen gegevens verzamelen voor Gorans eigen overzicht. Bots benaderen niemand: geen e-mails, geen LinkedIn-berichten, geen telefoontjes. Goran bepaalt zelf wie hij mailt.
+Alleen gegevens verzamelen voor It's Just Software. Bots benaderen niemand: geen e-mails, geen LinkedIn-berichten, geen telefoontjes. Goran bepaalt zelf wie hij mailt.
 
 ## 👥 Doelgroep en inclusiecriteria
 - Nederlandse accountants-, boekhoud- en administratiekantoren.
@@ -110,3 +110,9 @@ Past een kantoor niet op het profiel, dan komt het niet in de lijst (of wordt he
 - Goran vult deze velden zelf in; bots wijzigen ze niet.
 - Notion-views **Resultaten per aanleiding** en **Resultaten per provincie** (alle kantoren met Mailstatus ≠ Nog niet).
 - Zodra er genoeg data is (richtlijn: ≥ 30 gemailde kantoren), weegt de scout zijn zoektocht naar de aanleiding en provincie met de beste resultaten (Reactie/Proefaccount/Demo/Klant).
+
+## 📈 Resultaten
+- Notion-velden: **Mailstatus** (Nog niet / Gemaild / Reactie / Proefaccount / Demo / Klant / Geen interesse), **Datum gemaild**, **Gebruikte variant**, **Datum laatste reactie**, **Resultaat notitie**. Alleen Goran vult ze.
+- In de lijst is er één kolom **Status**: staat Mailstatus op iets anders dan "Nog niet", dan is Mailstatus uit Notion leidend en wordt die getoond; anders de Contactstatus (Niet benaderd / Klaar voor contact / ..., incl. lokale wijzigingen).
+- Tab **Resultaten**: funnel Gemaild → Reactie → Proefaccount → Demo → Klant (een kantoor telt mee in elke stap die het bereikt heeft; Geen interesse telt als gemaild en staat apart), conversie per Overstapaanleiding, per Provincie en per Gebruikte variant. Zonder gemailde kantoren een lege staat.
+- Tab **Hoe het werkt**: team, flow, wat al automatisch gaat en ideeën.
