@@ -75,3 +75,6 @@ Past een kantoor niet op het profiel, dan komt het niet in de lijst (of wordt he
 - Voorrang: een lokale wijziging wint altijd van het Notion-veld **Mailstatus** (Notion heeft geen tijdstempel per wijziging, en een lokale klik is altijd een bewuste, recente actie van Goran). Zonder lokale wijziging toont de site de Notion-status (bijv. Reactie, Demo). Wijkt Notion af van de lokale status, dan staat de Notion-waarde er klein onder.
 - Wil je de status overal hetzelfde hebben: zet hem ook in Notion (Mailstatus). Lokale status wissen = browsergegevens voor deze site wissen.
 - Filter **Mail: gemaild / nog niet** gebruikt dezelfde effectieve status.
+- **Volledigheid**: per kantoor een score over 10 kernvelden (Klanten, Software, Aanleiding, Contact, Functie, E-mail, Telefoon, Website, Dienstverlening, Plaats). Filter volledig/onvolledig en KPI "% volledig" (= 10/10). Telefoon telt mee maar is geen tabelkolom.
+- "niet publiek gevonden" verschijnt i.p.v. "–" als de Opmerking verificatie/Vervolgactie dat voor dat veld vermeldt; "schatting" bij klanten als Bron aantal klanten met "schatting" begint.
+- Layout: fluid tot 2400px, geen horizontale scroll; op smallere schermen verdwijnen eerst Aanleiding (<1440px), daarna Klanten/Software/Verificatie/Volledig (<1024px); Website en Dienstverlening alleen vanaf 1600px.
