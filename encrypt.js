@@ -10,7 +10,8 @@ const rows0=(Array.isArray(raw)?raw:raw.results||[]).map(r=>{const o={};for(cons
  if(typeof val==='string'&&val.startsWith('[')){try{val=JSON.parse(val)}catch(e){}}
  if(val!==null&&val!=='')o[key]=val;}return o;});
 const rows=rows0.map(o=>{const d=dom(o.Website||'');if(d){o._domain=d;if(logos[d])o._logo=logos[d];}return o;});
-const payload=Buffer.from(JSON.stringify({updated:new Date().toISOString(),rows}));
+const templates=fs.existsSync('private/templates.json')?JSON.parse(fs.readFileSync('private/templates.json','utf8')):{};
+const payload=Buffer.from(JSON.stringify({updated:new Date().toISOString(),rows,templates}));
 const salt=crypto.randomBytes(16),iv=crypto.randomBytes(12),iter=310000;
 const key=crypto.pbkdf2Sync(pw,salt,iter,32,'sha256');
 const c=crypto.createCipheriv('aes-256-gcm',key,iv);

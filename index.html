@@ -1,5 +1,5 @@
 <!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Cache-Control" content="no-cache, max-age=0"><meta name="ijs-version" content="2026-10-11f"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer"><title>IJS Hagellijst · It's Just Software</title>
+<meta http-equiv="Cache-Control" content="no-cache, max-age=0"><meta name="ijs-version" content="2026-10-11g"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer"><title>IJS Hagellijst · It's Just Software</title>
 <link rel="icon" href="assets/logo-it.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -173,6 +173,12 @@ td{border-bottom:1px solid var(--line)}tbody tr:hover{background:var(--hover)}tb
  #toast{bottom:calc(80px + env(safe-area-inset-bottom))}
  #vWw{padding-bottom:90px}
 }
+.inf{display:inline-grid;place-items:center;width:15px;height:15px;margin-left:5px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink2);font:600 10px/1 Inter,sans-serif;font-style:italic;cursor:help;padding:0;vertical-align:middle}.inf:hover,.inf:focus-visible{color:var(--ink);border-color:var(--ink2);outline:none;box-shadow:0 0 0 2px var(--acc)}
+#tip{position:absolute;z-index:80;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px 11px;font-size:13px;line-height:1.45;box-shadow:0 8px 24px #0006;pointer-events:none;text-transform:none;letter-spacing:0;font-weight:400}
+.cm{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:10px}.cmhd{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.cmhd select.sm{padding:5px 28px 5px 10px;font-size:13px;max-width:none}
+.cmrow{display:grid;gap:3px}.cmsub{font-weight:600;color:var(--ink);display:flex;gap:6px;align-items:flex-start}.cmtxt{white-space:pre-wrap;font:14px/1.55 Inter,sans-serif;color:var(--ink);margin:0;max-height:340px;overflow:auto;border-top:1px solid var(--line);padding-top:10px}
+.cmact{display:flex;gap:8px;flex-wrap:wrap}.btn.sm{padding:6px 11px;font-size:13px}.fus{display:grid;gap:6px;border-top:1px solid var(--line);padding-top:8px}.fu summary{cursor:pointer;color:var(--ink);font-size:13.5px;padding:4px 0}.fu[open]{display:grid;gap:8px}
+.shl{display:flex;align-items:center}
 </style></head><body>
 <div id="login"><form class="lbox" id="lf"><img class="logo" src="assets/logo.svg" alt="It's Just Software"><h1>Hagellijst</h1><p>Prospectoverzicht accountants- en boekhoudkantoren. Log in om de versleutelde gegevens te openen.</p>
 <div class="field"><input type="password" id="pw" placeholder="Wachtwoord" autocomplete="current-password" autofocus aria-label="Wachtwoord"></div>
@@ -278,7 +284,7 @@ td{border-bottom:1px solid var(--line)}tbody tr:hover{background:var(--hover)}tb
 </ul>
 </section></div></main>
 </div>
-<div id="ov"></div><aside id="dr" aria-hidden="true" role="dialog"><div class="dh" id="dh"></div><div class="db" id="db"></div><div class="df" id="df"></div></aside><div id="toast"></div><div class="shov" id="shov" hidden></div><div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shh" hidden><div class="shgrip"></div><div class="shhd"><h4 id="shh">Filters</h4><button class="btn" id="shclr">Wis alles</button></div><div class="shb" id="shb"></div><button class="btn pri shres" id="shres">Toon resultaten</button></div><nav class="bnav" id="bnav" aria-label="Hoofdnavigatie"><button class="bn on" data-t="ov"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg><span>Kantoren</span></button><button class="bn" data-t="wv"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2h9"/></svg><span>Werkvoorraad <b id="bnc" class="num"></b></span></button></nav>
+<div id="ov"></div><aside id="dr" aria-hidden="true" role="dialog"><div class="dh" id="dh"></div><div class="db" id="db"></div><div class="df" id="df"></div></aside><div id="toast"></div><div id="tip" role="tooltip" hidden></div><div class="shov" id="shov" hidden></div><div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shh" hidden><div class="shgrip"></div><div class="shhd"><h4 id="shh">Filters</h4><button class="btn" id="shclr">Wis alles</button></div><div class="shb" id="shb"></div><button class="btn pri shres" id="shres">Toon resultaten</button></div><nav class="bnav" id="bnav" aria-label="Hoofdnavigatie"><button class="bn on" data-t="ov"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg><span>Kantoren</span></button><button class="bn" data-t="wv"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2h9"/></svg><span>Werkvoorraad <b id="bnc" class="num"></b></span></button></nav>
 <script>
 const $=id=>document.getElementById(id),b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -286,7 +292,7 @@ const arr=v=>v==null||v===''?[]:Array.isArray(v)?v:[v];
 let D=null,ROWS=[],sortK='Prioriteit',sortD=1,F={};
 const theme=localStorage.getItem('ijs-theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=theme;
 $('theme').onclick=()=>{const t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;localStorage.setItem('ijs-theme',t)};
-async function decrypt(pw){const r=await fetch('data/hagellijst.enc?v=2026-10-11f&'+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('net');const e=await r.json();
+async function decrypt(pw){const r=await fetch('data/hagellijst.enc?v=2026-10-11g&'+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('net');const e=await r.json();
  const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(e.salt),iterations:e.iter,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
  return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(e.iv)},key,b64(e.ct))))}
@@ -331,6 +337,55 @@ function act(r){const v=r['Status verificatie']||'',c=cst(r).s;
 const needs=r=>{const v=r['Status verificatie']||'',c=cst(r).s;return v==='Te controleren'||!v||(v.startsWith('Goedgekeurd')&&['Niet benaderd','Klaar voor contact'].includes(c))||c==='Benaderd'};let VIEW='ov';
 const actb=r=>{const [l,a]=act(r);return `<button class="ab${a==='con'||a==='ver'&&l==='Controleren'?' go':''}" data-a="${a}" data-r="${esc(rid(r))}">${l} <span aria-hidden="true">→</span></button>`};
 /* ---- Volledigheid / helpers ---- */
+/* ---- Campagnemail (alleen tonen/kopiëren; de site verstuurt niets) ---- */
+const TPL=()=>(D&&D.templates)||{};
+const NOTP=/\b(onbekend|kantoor|administratie|team|info|algemeen|receptie|secretariaat|redactie|n\.?v\.?t|bv|b\.v\.)\b/i;
+function voornaam(r){const n=String(r.Contactpersoon||'').split(/[\/,;(]| en /)[0].trim();if(!n||/\d|@/.test(n)||NOTP.test(n))return null;const w=n.split(/\s+/);if(w.length<2)return null;let f=w[0].replace(/[.,]$/,'');if(/^(dhr|mevr|mw|mr|drs|dr|ir|ing|de heer|mevrouw)\.?$/i.test(f)||/\./.test(f)||!/^[A-ZÀ-Ý][a-zà-ÿ'-]+$/.test(f))return null;return f}
+function autoCode(r){const a=arr(r.Overstapaanleiding);if(a.includes('MLE-uitfasering'))return 'MLE-1';if(a.includes('Heroverweegt software/contract')||a.includes('Weerstand grote leverancier'))return 'CONTRACT-1';return 'SUPPORT-1'}
+function aanl(r,code){const a=arr(r.Overstapaanleiding),k=r.Kantoor||'jullie kantoor';
+ if(code==='MLE-1')return arr(r['Huidige software']).includes('MLE')||a.includes('MLE-uitfasering')?`Ik begreep dat ${k} met MLE werkt.`:'';
+ if(a.includes('Heroverweegt software/contract'))return `Ik begreep dat ${k} de huidige software of het contract heroverweegt.`;
+ if(a.includes('Weerstand grote leverancier'))return `Ik begreep dat ${k} liever niet vastzit aan een groot pakket met een zwaar contract.`;
+ if(a.includes('Drempel/support'))return `Ik begreep dat de stap naar nieuwe software voor ${k} een drempel kan zijn.`;return ''}
+function fillT(t,r,code,orig){const v=voornaam(r);let s=t.replace(/Hoi \{voornaam\},/g,v?`Hoi ${v},`:'Goedendag,').replace(/\{voornaam\}/g,v||'').replace(/\{kantoor\}/g,r.Kantoor||'').replace(/\{aanleiding\}\s*/g,a=>{const x=aanl(r,code);return x?x+' ':''}).replace(/\{oorspronkelijk onderwerp\}/g,orig||'');return s.replace(/ +\n/g,'\n')}
+let CODE={};
+function camp(r){const T=TPL(),id=rid(r);
+ if(r['Campagne tekst'])return {def:1,code:r['Campagne code']||'',sub:r['Campagne onderwerp']||'',txt:r['Campagne tekst']};
+ const code=CODE[id]||r['Campagne code']||autoCode(r),t=T[code];if(!t)return null;return {def:0,code,sub:fillT(t.onderwerp,r,code),txt:fillT(t.tekst,r,code)}}
+function campHtml(r){const c=camp(r),T=TPL();if(!c)return '<p class="sub">Geen sjablonen beschikbaar (volgende sync).</p>';
+ const codes=['MLE-1','CONTRACT-1','SUPPORT-1'].filter(k=>T[k]);
+ const fu=['FU5-1','FU12-1'].filter(k=>T[k]).map(k=>{const s=fillT(T[k].onderwerp,r,k,c.sub),t=fillT(T[k].tekst,r,k,c.sub);return `<details class="fu"><summary>${esc(k)} · ${esc(T[k].titel)}</summary><div class="cmrow"><span class="sub">Onderwerp</span><div class="cmsub">${esc(s)}${cp(s)}</div></div><pre class="cmtxt">${esc(t)}</pre><div class="cmact"><button class="btn sm" data-cc="${esc(t)}">Kopieer tekst</button><button class="btn sm" data-cc="${esc('Onderwerp: '+s+'\n\n'+t)}">Kopieer alles</button></div></details>`}).join('');
+ return `<div class="cmhd"><span class="st"><i style="background:${c.def?'var(--ok)':'var(--neu)'}"></i>${c.def?'Definitief':'Concept uit sjabloon'}</span>${c.def?(c.code?`<span class="tag">${esc(c.code)}</span>`:''):`<label class="sub" for="cmSel">Sjabloon</label><select id="cmSel" class="sm">${codes.map(k=>`<option ${k===c.code?'selected':''} value="${k}">${k}${k===autoCode(r)?' (aanbevolen)':''}</option>`).join('')}</select>`}</div>
+ <div class="cmrow"><span class="sub">Onderwerp</span><div class="cmsub">${esc(c.sub)}${cp(c.sub)}</div></div>
+ <pre class="cmtxt">${esc(c.txt)}</pre>
+ <div class="cmact"><button class="btn sm" data-cc="${esc(c.txt)}">Kopieer tekst</button><button class="btn sm pri" data-cc="${esc('Onderwerp: '+c.sub+'\n\n'+c.txt)}">Kopieer alles</button></div>
+ ${!c.def?`<p class="sub sm">${voornaam(r)?'':'Geen persoonsnaam bekend: neutrale aanhef. '}Controleer de tekst voor gebruik. De site verstuurt niets.</p>`:''}${fu?`<div class="fus"><span class="sub">Opvolgmails</span>${fu}</div>`:''}`}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-cc]');if(b){navigator.clipboard.writeText(b.dataset.cc).then(()=>toast('Gekopieerd'),()=>toast('Kopiëren mislukt'))}});
+/* ---- Kolomuitleg ---- */
+const INFO={Kantoor:'Officiële handelsnaam en vestigingsplaats, door IJS Scout gevonden op de website of bij de KVK.',
+ Prioriteit:'Kans A/B/C van IJS Scout: A = past volledig + sterk signaal met bron + beslisser bekend; B = past, maar signaal zwak of contact onvolledig; C = past, geen signaal bekend.',
+ Overstapaanleiding:'Gevonden signaal om over te stappen (bv. MLE-uitfasering, heroverweegt software/contract), elk met bron-URL; "Geen bekend" als er niets is gevonden.',
+ 'Status verificatie':'Oordeel van IJS Verifier na controle van KVK/website, samenstelpraktijk, omvang, contact en bronnen: Te controleren, Goedgekeurd (met correcties) of Afgewezen.',
+ Contactpersoon:'Beslisser (eigenaar, vennoot, directeur) of verantwoordelijke voor samenstellen of software, met functie; alleen zakelijke gegevens.',
+ 'E-mail':'Zakelijk e-mailadres van het kantoor of de contactpersoon, uit de website; "niet publiek gevonden" als de Verifier dat noteerde.',
+ _cs:'Jouw contactstatus uit Notion (Niet benaderd t/m Afgerond); een wijziging op de site is eerst lokaal tot je hem via "Kopieer wijzigingen" laat bijwerken.',
+ _vol:'Aantal van 10 kernvelden dat is ingevuld: klanten, software, aanleiding, contact, functie, e-mail, telefoon, website, dienstverlening en plaats.',
+ _act:'Voorgestelde volgende stap, afgeleid van verificatie en contactstatus: controleren, contact voorbereiden, reactie registreren of reden bekijken.',
+ 'Geschat aantal klanten':'Schatting van het aantal klanten met bron; "schatting" als de bron zelf een schatting is.',
+ 'Huidige software':'Bekende jaarrekening-/samenstelsoftware, met bron (vacature, website, case of LinkedIn).',
+ Website:'Hoofdwebsite van het kantoor.',Dienstverlening:'Relevante diensten van het kantoor, zoals jaarrekening samenstellen, KVK-deponering en advies.',
+ Provincie:'Provincie van de hoofdvestiging.',Rol:'Rol van de contactpersoon: Beslisser, Samenstelpraktijk of Automatisering/Operatie.',
+ _ld:'Datum waarop je het kantoor voor het laatst benaderde (Notion "Laatst benaderd" of je lokale wijziging).','Datum onderzoek':'Datum waarop IJS Scout het kantoor heeft onderzocht.',
+ Plaats:'Vestigingsplaats van de hoofdvestiging.'};
+const FINFO={Prioriteit:INFO.Prioriteit,Plaats:INFO.Plaats,'Huidige software':INFO['Huidige software'],Overstapaanleiding:INFO.Overstapaanleiding,'Status verificatie':INFO['Status verificatie'],fVol:'Volledig = alle 10 kernvelden ingevuld (10/10); onvolledig = minder.',fCs:INFO._cs};
+const ib=(t,l)=>`<button type="button" class="inf" aria-label="Uitleg ${esc(l)}" data-tip="${esc(t)}">i</button>`;
+let tipB=null;function tipShow(b){const t=$('tip');t.textContent=b.dataset.tip;t.hidden=false;const r=b.getBoundingClientRect(),w=Math.min(300,innerWidth-16);t.style.width=w+'px';let x=Math.min(Math.max(8,r.left+r.width/2-w/2),innerWidth-w-8);t.style.left=x+'px';t.style.top=(r.bottom+6+scrollY)+'px';b.setAttribute('aria-describedby','tip');tipB=b}
+function tipHide(){$('tip').hidden=true;if(tipB){tipB.removeAttribute('aria-describedby');delete tipB.dataset.pin}tipB=null}
+document.addEventListener('click',e=>{const b=e.target.closest('.inf');if(b){e.stopPropagation();e.preventDefault();if(tipB===b&&b.dataset.pin){delete b.dataset.pin;tipHide()}else{b.dataset.pin=1;tipShow(b)}return}if(!e.target.closest('#tip'))tipHide()},true);
+document.addEventListener('mouseover',e=>{const b=e.target.closest('.inf');if(b)tipShow(b)});document.addEventListener('mouseout',e=>{const b=e.target.closest('.inf');if(b&&!b.dataset.pin)tipHide()});
+document.addEventListener('focusin',e=>{const b=e.target.closest('.inf');if(b)tipShow(b);else if(tipB)tipHide()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&tipB){e.stopImmediatePropagation();const b=tipB;tipHide();b.focus()}if((e.key==='Enter'||e.key===' ')&&e.target.closest&&e.target.closest('.inf'))e.stopPropagation()},true);
+addEventListener('scroll',()=>tipB&&tipHide(),{passive:true});
 const VF=[['Geschat aantal klanten','Klanten'],['Huidige software','Software'],['Overstapaanleiding','Aanleiding'],['Contactpersoon','Contact'],['Functie','Functie'],['E-mail','E-mail'],['Telefoon','Telefoon'],['Website','Website'],['Dienstverlening','Dienstverlening'],['Plaats','Plaats']];
 const has=v=>v!=null&&v!==''&&!(Array.isArray(v)&&!v.length)&&!/^onbekend$/i.test(String(v));
 const vol=r=>VF.filter(([k])=>has(r[k])).length;
@@ -404,7 +459,7 @@ function render(){const rs=sorted(filtered()),C=cols();
  if($('q').value)ch.unshift(`<span class="chip">Zoek: “${esc($('q').value)}”<button data-q="1" aria-label="Wis zoekopdracht">×</button></span>`);
  if(ch.length)ch.push('<button class="btn" id="clr" style="padding:3px 10px;font-size:12px">Wis alle filters</button>');
  $('chips').innerHTML=ch.join('');$('chips').querySelectorAll('.chip button').forEach(b=>b.onclick=()=>{if(b.dataset.q){$('q').value='';render()}else setF(b.dataset.k,'')});if($('clr'))$('clr').onclick=clearAll;
- $('th').innerHTML=C.map(k=>{const o=ALLC[k];return `<th data-c="${esc(k)}" ${o.ns?'':`data-k="${esc(k)}" tabindex="0" aria-sort="${sortK===k?(sortD>0?'ascending':'descending'):'none'}"`}>${o.l}${o.ns?'':`<span class="ar">${sortK===k?(sortD>0?'↑':'↓'):'↕'}</span>`}</th>`}).join('');
+ $('th').innerHTML=C.map(k=>{const o=ALLC[k];return `<th data-c="${esc(k)}" ${o.ns?'':`data-k="${esc(k)}" tabindex="0" aria-sort="${sortK===k?(sortD>0?'ascending':'descending'):'none'}"`}>${o.l}${INFO[k]?ib(INFO[k],o.l):''}${o.ns?'':`<span class="ar">${sortK===k?(sortD>0?'↑':'↓'):'↕'}</span>`}</th>`}).join('');
  $('th').querySelectorAll('th[data-k]').forEach(t=>{t.classList.toggle('on',t.dataset.k===sortK);t.onclick=()=>{sortD=sortK===t.dataset.k?-sortD:1;sortK=t.dataset.k;render()};t.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();t.click()}}});
  $('tb').innerHTML=rs.map(r=>`<tr tabindex="0" data-i="${ROWS.indexOf(r)}"${curR===r&&$('dr').classList.contains('on')?' class="sel" aria-selected="true"':''}>${C.map(k=>`<td data-c="${esc(k)}">${ALLC[k].c(r)}</td>`).join('')}</tr>`).join('');
  $('cl').innerHTML=rs.map(r=>{const a=arr(r.Overstapaanleiding).filter(x=>x!=='Geen bekend');return `<div class="ocard" tabindex="0" data-i="${ROWS.indexOf(r)}"><div class="top">${av(r)}<div style="flex:1;min-width:0"><b class="p1 nm1">${esc(r.Kantoor)}</b><span class="sub">${esc(r.Plaats||'–')}</span></div>${pill(r.Prioriteit)}</div><div class="meta">${badge(r['Status verificatie'])}${a.length?`<span class="tag sig">${esc(a[0])}</span>${a.length>1?`<span class="tag">+${a.length-1}</span>`:''}`:''}</div><div class="cfoot"><span class="cfl">${csb(r)}<span class="sub sm">${vol(r)}/10 velden</span></span>${actb(r)}</div></div>`}).join('');
@@ -427,10 +482,10 @@ let lastFocus;
 function show(r,keep,focusSec){curR=r;if(!keep&&!$('dr').classList.contains('on'))lastFocus=document.activeElement;const c=cst(r);
  $('dh').innerHTML=`<button class="btn back" id="dback" aria-label="Terug naar lijst">← Terug</button>${av(r,1)}<div style="min-width:0"><h3>${esc(r.Kantoor)}</h3><div class="sub">${esc([r.Plaats,r.Provincie].filter(Boolean).join(', '))}</div><div class="meta" style="margin-top:6px">${pill(r.Prioriteit)}${badge(r['Status verificatie'])}${st(c.s,CSCOL[c.s])}</div></div><button class="btn x" id="dx" aria-label="Paneel sluiten (Esc)">✕</button>`;
  const cs=`<div class="csbox"><label for="csSel" class="sub">Contactstatus</label><div class="csrow"><select id="csSel">${CS.map(s=>`<option ${s===c.s?'selected':''}>${s}</option>`).join('')}</select>${c.s!=='Benaderd'&&r['E-mail']?'<button class="btn pri" id="csBen">Markeer als benaderd</button>':''}</div><div class="sub">Laatst benaderd: ${c.d?fd(c.d):'–'}${c.local?` · <span class="loc">lokaal, nog niet gesynct</span> (Notion: ${esc(c.n)})`:' · uit Notion'}</div></div>`;
- $('db').innerHTML=SECS.map(([t,id,ks])=>`<div class="sec" id="sec-${id}"><h5>${t}</h5>${id==='con'&&r['E-mail']&&!['Benaderd','Reactie ontvangen','Gesprek gepland','Afgerond'].includes(c.s)?'<p class="hint">Contact voorbereiden: kopieer het adres en mail vanuit je eigen mailprogramma. Deze site verstuurt niets.</p>':''}<dl class="kv">${ks.map(k=>`<dt>${k}</dt><dd>${!has(r[k])&&NPK[k]&&np(r,k)?dash(r,k):val(k,r[k])??'<span class="sub">Onbekend</span>'}</dd>`).join('')}</dl>${id==='com'?cs:''}</div>`).join('');
+ $('db').innerHTML=SECS.map(([t,id,ks])=>`<div class="sec" id="sec-${id}"><h5>${t}</h5>${id==='con'&&r['E-mail']&&!['Benaderd','Reactie ontvangen','Gesprek gepland','Afgerond'].includes(c.s)?'<p class="hint">Contact voorbereiden: kopieer het adres en mail vanuit je eigen mailprogramma. Deze site verstuurt niets.</p>':''}<dl class="kv">${ks.map(k=>`<dt>${k}</dt><dd>${!has(r[k])&&NPK[k]&&np(r,k)?dash(r,k):val(k,r[k])??'<span class="sub">Onbekend</span>'}</dd>`).join('')}</dl>${id==='com'?cs:''}</div>`).join('')+`<div class="sec" id="sec-cm"><h5>Campagnemail</h5><div class="cm">${campHtml(r)}</div></div>`;
  $('dr').classList.add('on');$('ov').classList.add('on');document.body.classList.add('dopen');fit();$('dr').setAttribute('aria-hidden','false');$('dx').onclick=hide;$('dback').onclick=hide;
  const em=r['E-mail'];$('df').innerHTML=(em?`<button class="btn" id="dfcp">Kopieer e-mail</button>`:'')+(c.s!=='Benaderd'&&em?`<button class="btn pri" id="dfben">Markeer als benaderd</button>`:c.s==='Benaderd'?`<button class="btn pri" id="dfre">Reactie registreren</button>`:`<button class="btn" id="dfcl">Sluiten</button>`);if($('dfcp'))$('dfcp').onclick=()=>navigator.clipboard.writeText(em).then(()=>toast('Gekopieerd: '+em));if($('dfben'))$('dfben').onclick=()=>setCs(r,'Benaderd');if($('dfre'))$('dfre').onclick=()=>setCs(r,'Reactie ontvangen');if($('dfcl'))$('dfcl').onclick=hide;
- $('csSel').onchange=()=>setCs(r,$('csSel').value);if($('csBen'))$('csBen').onclick=()=>setCs(r,'Benaderd');
+ $('csSel').onchange=()=>setCs(r,$('csSel').value);if($('cmSel'))$('cmSel').onchange=()=>{CODE[rid(r)]=$('cmSel').value;show(r,1)};if($('csBen'))$('csBen').onclick=()=>setCs(r,'Benaderd');
  document.querySelectorAll('#tb tr').forEach(t=>{const on=ROWS[t.dataset.i]===r;t.classList.toggle('sel',on);t.setAttribute('aria-selected',on)});
  if(focusSec){const s=$('sec-'+focusSec);s.scrollIntoView({block:'start'});s.classList.add('flash');const f=s.querySelector('.cp,a,select');(f||$('dx')).focus()}else if(!keep)$('dx').focus()}
 function hide(){$('dr').classList.remove('on');$('ov').classList.remove('on');document.body.classList.remove('dopen');fit();$('dr').setAttribute('aria-hidden','true');document.querySelectorAll('#tb tr.sel').forEach(t=>t.classList.remove('sel'));lastFocus&&document.contains(lastFocus)&&lastFocus.focus()}
@@ -452,7 +507,7 @@ $('msb').onclick=()=>{$('q').focus();$('q').scrollIntoView({block:'center'})};
 $('mmb').onclick=e=>{e.stopPropagation();const m=$('mmenu');m.hidden=!m.hidden;$('mmb').setAttribute('aria-expanded',!m.hidden)};
 document.addEventListener('click',e=>{if(!e.target.closest('#mmenu,#mmb'))$('mmenu').hidden=true});
 $('mmenu').onclick=e=>{const m=e.target.closest('.mi');if(!m)return;$('mmenu').hidden=true;if(m.dataset.m==='ww')showTab('ww');if(m.dataset.m==='th')$('theme').click();if(m.dataset.m==='lo')$('logout').click()};
-let shHome=null;function openSheet(){const sels=[...document.querySelectorAll('.bar select')];shHome=sels[0].parentNode;sels.forEach(s=>{const l=document.createElement('label');l.className='shf';l.textContent=(s.dataset.l||s.getAttribute('aria-label')||'').replace(/ filter$/,'');l.appendChild(s);$('shb').appendChild(l)});$('sheet').hidden=false;$('shov').hidden=false;document.body.classList.add('noscroll');render();$('shres').focus()}
+let shHome=null;function openSheet(){const sels=[...document.querySelectorAll('.bar select')];shHome=sels[0].parentNode;sels.forEach(s=>{const l=document.createElement('label');l.className='shf';const lt=(s.dataset.l||s.getAttribute('aria-label')||'').replace(/ filter$/,'');const sp=document.createElement('span');sp.className='shl';sp.textContent=lt;const fi=FINFO[s.dataset.k]||FINFO[s.id];if(fi)sp.insertAdjacentHTML('beforeend',' '+ib(fi,lt));l.appendChild(sp);l.appendChild(s);$('shb').appendChild(l)});$('sheet').hidden=false;$('shov').hidden=false;document.body.classList.add('noscroll');render();$('shres').focus()}
 function closeSheet(){const t=document.querySelector('.bar .tools');$('shb').querySelectorAll('select').forEach(s=>shHome.insertBefore(s,t));$('shb').innerHTML='';$('sheet').hidden=true;$('shov').hidden=true;document.body.classList.remove('noscroll');$('mfb').focus()}
 $('mfb').onclick=openSheet;$('shres').onclick=closeSheet;$('shov').onclick=closeSheet;$('shclr').onclick=()=>clearAll();
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('sheet').hidden){e.stopImmediatePropagation();closeSheet()}},true);

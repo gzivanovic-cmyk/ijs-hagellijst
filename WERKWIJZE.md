@@ -80,3 +80,11 @@ Past een kantoor niet op het profiel, dan komt het niet in de lijst (of wordt he
 - "niet publiek gevonden" verschijnt i.p.v. "–" als de Opmerking verificatie/Vervolgactie dat voor dat veld vermeldt; "schatting" bij klanten als Bron aantal klanten met "schatting" begint.
 - Layout: fluid tot 2400px, nooit horizontale scroll. Standaardkolommen: Kantoor, Kans, Aanleiding, Verificatie, Contactpersoon, E-mail, Contactstatus, Volledigheid, Actie; via **Kolommen aanpassen** extra velden (keuze in localStorage `ijs-cols`). Past de tabel niet, dan worden automatisch eerst extra kolommen, dan Aanleiding, Contactpersoon, Volledigheid, Verificatie en E-mail verborgen (staan altijd in het detailpaneel).
 - Detailpaneel rechts (38% breed vanaf 1200px, tabel blijft zichtbaar). Toetsen: Enter opent, ↑/↓ volgende/vorige kantoor, Esc sluit, / zoeken. Schakelaar Compact/Comfortabel (localStorage `ijs-density`).
+
+## 📨 Campagnemail per kantoor
+- Notion-velden (alleen IJS Hagellijst): **Campagne code** (select: MLE-1, CONTRACT-1, SUPPORT-1), **Campagne onderwerp** (tekst), **Campagne tekst** (tekst).
+- Is *Campagne tekst* gevuld, dan toont het dossier die als **Definitief**. Anders maakt de site een **Concept uit sjabloon**: MLE-uitfasering → MLE-1; heroverweegt software/contract of weerstand grote leverancier → CONTRACT-1; anders SUPPORT-1 (wisselen kan met de selector; Campagne code in Notion gaat voor de automatische keuze).
+- Placeholders: {voornaam} = eerste woord van de contactnaam, alleen als dat een persoonsnaam is (anders aanhef "Goedendag,"); {kantoor}; {aanleiding} = één neutrale zin op basis van het signaal (leeg als er geen signaal is).
+- Opvolgmails FU5-1 en FU12-1 staan inklapbaar eronder. Kopieerknoppen voor onderwerp, tekst en "Kopieer alles". De site verstuurt niets.
+- Bron sjablonen: Notion-pagina "IJS Campagne-concepten". Bij elke sync haalt de agent die op (notion-fetch → private/campagne-concepten.md); parse_templates.py maakt private/templates.json, die versleuteld in de payload gaat. LinkedIn-posts worden niet meegenomen.
+- Kolomkoppen en filterlabels hebben een i-icoon met uitleg (hover, focus of tik; Esc sluit).
