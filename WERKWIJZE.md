@@ -92,3 +92,21 @@ Past een kantoor niet op het profiel, dan komt het niet in de lijst (of wordt he
 ## 📡 Signalen (IJS Signalen)
 - Notion-velden **Laatste signaal** (tekst, met bron-URL) en **Datum laatste signaal** (datum), gevuld door IJS Signalen. Ontbreken ze, dan toont de site niets.
 - "Nieuw signaal" = signaal met datum in de laatste 14 dagen: label bij het kantoor, sectie *Signalen* in het dossier (datum, bron, samenvatting, toelichting), filter *Signalen: recente signalen* en de kleine KPI *Recente signalen*.
+
+## 🚫 Uitsluitingen en dubbelcheck (alle bots)
+- Vóór het toevoegen van een kantoor controleert de bot **IJS Uitsluitingen** (Notion, collection://64ed9e44-8355-4ec5-bc6a-d421778ee47b) op **domein** (zonder www/https) én op **naam**, en daarnaast de bestaande rijen in **IJS Hagellijst** (ook afgewezen rijen). Bij een match: overslaan, niet toevoegen.
+- Redenen in IJS Uitsluitingen: Bestaande klant, In onderhandeling, Afgewezen/geen interesse, Concurrent/partner, Overig. Goran vult zelf bestaande klanten en lopende gesprekken in. Kantoren die de Verifier op profiel afwees staan erin met reden *Overig* ("Afgewezen door verifier: …").
+
+## 🎯 Focusregel scout
+- IJS Scout zoekt primair kantoren met een **echt, bronvermeld signaal**: MLE-uitfasering, weerstand tegen NUMBERS/grote leverancier of contract, heroverweging van software, of een support-drempel.
+- Kantoren die alleen op profiel passen (prioriteit C, geen signaal) zijn **maximaal 20% van een batch**.
+
+## 🌐 Wie pusht de website
+- Alleen **IJS Webbeheer** (agent e2fde750-b841-4ba7-9894-fe468ccadf40) bouwt en pusht de website.
+- Scout, Verifier, Signalen en Campagne schrijven **alleen in Notion** en melden wijzigingen aan IJS Webbeheer.
+
+## 📈 Resultaten meten
+- Velden in IJS Hagellijst: **Mailstatus** (Nog niet / Gemaild / Reactie / Proefaccount / Demo / Klant / Geen interesse), **Datum gemaild**, **Gebruikte variant** (bijv. MLE-1), **Datum laatste reactie**, **Resultaat notitie**.
+- Goran vult deze velden zelf in; bots wijzigen ze niet.
+- Notion-views **Resultaten per aanleiding** en **Resultaten per provincie** (alle kantoren met Mailstatus ≠ Nog niet).
+- Zodra er genoeg data is (richtlijn: ≥ 30 gemailde kantoren), weegt de scout zijn zoektocht naar de aanleiding en provincie met de beste resultaten (Reactie/Proefaccount/Demo/Klant).
