@@ -1,7 +1,7 @@
 # Werkwijze IJS Hagellijst
 
 ## 🎯 Doel
-Alleen gegevens verzamelen voor It's Just Software. Bots benaderen niemand: geen e-mails, geen LinkedIn-berichten, geen telefoontjes. Goran bepaalt zelf wie hij mailt.
+Alleen gegevens verzamelen voor It's Just Software. Bots benaderen niemand: geen e-mails, geen LinkedIn-berichten, geen telefoontjes. Achmed bepaalt zelf wie hij mailt.
 
 ## 👥 Doelgroep en inclusiecriteria
 - Nederlandse accountants-, boekhoud- en administratiekantoren.
@@ -51,8 +51,8 @@ Past een kantoor niet op het profiel, dan komt het niet in de lijst (of wordt he
 - **Prioriteit**: A, B of C (zie definitie).
 - **Status verificatie**: Te controleren, Goedgekeurd, Goedgekeurd met correcties, Afgewezen.
 - **Opmerking verificatie**: toelichting van de Verifier (wat gecorrigeerd of waarom afgewezen).
-- **Vervolgactie**: voorgestelde volgende stap voor Goran.
-- **Mailstatus**: Nog niet, Gemaild, Reactie, Proefaccount, Demo, Geen interesse (alleen Goran wijzigt dit).
+- **Vervolgactie**: voorgestelde volgende stap voor Achmed.
+- **Mailstatus**: Nog niet, Gemaild, Reactie, Proefaccount, Demo, Geen interesse (alleen Achmed wijzigt dit).
 - **Datum onderzoek**: datum waarop het kantoor is onderzocht.
 
 ## 🔎 Bronnen en betrouwbaarheid
@@ -71,7 +71,7 @@ Past een kantoor niet op het profiel, dan komt het niet in de lijst (of wordt he
 
 ## ✉️ E-mail, contactstatus en synchronisatie
 - E-mailadressen (Notion-veld **E-mail**) staan in de tabel, op de mobiele kaarten en in het detailpaneel: klikbaar als mailto, met kopieerknop. Geen adres = "–" of "niet publiek gevonden" als de Verifier dat noteerde. De site verstuurt nooit zelf mail.
-- **Contactstatus** (Notion select: Niet benaderd / Klaar voor contact / Benaderd / Reactie ontvangen / Gesprek gepland / Afgerond) en **Laatst benaderd** (Notion datum) zijn de waarheid en gelden op al Gorans apparaten. Leeg in Notion: de site leidt de status af van het oude veld Mailstatus (Nog niet → Niet benaderd, Gemaild → Benaderd, Reactie → Reactie ontvangen, Demo → Gesprek gepland, Proefaccount/Geen interesse → Afgerond).
+- **Contactstatus** (Notion select: Niet benaderd / Klaar voor contact / Benaderd / Reactie ontvangen / Gesprek gepland / Afgerond) en **Laatst benaderd** (Notion datum) zijn de waarheid en gelden op al Achmeds apparaten. Leeg in Notion: de site leidt de status af van het oude veld Mailstatus (Nog niet → Niet benaderd, Gemaild → Benaderd, Reactie → Reactie ontvangen, Demo → Gesprek gepland, Proefaccount/Geen interesse → Afgerond).
 - Prioriteit (kans A/B/C), Status verificatie en Contactstatus zijn drie gescheiden velden.
 - Wijzig je de status op de site, dan verschijnt hij meteen, gemarkeerd als **"lokaal, nog niet gesynct"** (opgeslagen in localStorage `ijs-contactstatus`, alleen in die browser). Onderaan verschijnt **"Kopieer wijzigingen (n)"**: dat kopieert een korte tekst (kantoor, Notion-id, nieuwe status, datum). Stuur die naar je assistent; die werkt Notion bij. Na de volgende sync is Notion gelijk aan de lokale waarde en verdwijnt de markering vanzelf.
 - Er staat bewust **geen Notion-token in de browser**; de site kan Notion dus niet zelf schrijven.
@@ -95,7 +95,7 @@ Past een kantoor niet op het profiel, dan komt het niet in de lijst (of wordt he
 
 ## 🚫 Uitsluitingen en dubbelcheck (alle bots)
 - Vóór het toevoegen van een kantoor controleert de bot **IJS Uitsluitingen** (Notion, collection://64ed9e44-8355-4ec5-bc6a-d421778ee47b) op **domein** (zonder www/https) én op **naam**, en daarnaast de bestaande rijen in **IJS Hagellijst** (ook afgewezen rijen). Bij een match: overslaan, niet toevoegen.
-- Redenen in IJS Uitsluitingen: Bestaande klant, In onderhandeling, Afgewezen/geen interesse, Concurrent/partner, Overig. Goran vult zelf bestaande klanten en lopende gesprekken in. Kantoren die de Verifier op profiel afwees staan erin met reden *Overig* ("Afgewezen door verifier: …").
+- Redenen in IJS Uitsluitingen: Bestaande klant, In onderhandeling, Afgewezen/geen interesse, Concurrent/partner, Overig. Achmed vult zelf bestaande klanten en lopende gesprekken in. Kantoren die de Verifier op profiel afwees staan erin met reden *Overig* ("Afgewezen door verifier: …").
 
 ## 🎯 Focusregel scout
 - IJS Scout zoekt primair kantoren met een **echt, bronvermeld signaal**: MLE-uitfasering, weerstand tegen NUMBERS/grote leverancier of contract, heroverweging van software, of een support-drempel.
@@ -107,12 +107,12 @@ Past een kantoor niet op het profiel, dan komt het niet in de lijst (of wordt he
 
 ## 📈 Resultaten meten
 - Velden in IJS Hagellijst: **Mailstatus** (Nog niet / Gemaild / Reactie / Proefaccount / Demo / Klant / Geen interesse), **Datum gemaild**, **Gebruikte variant** (bijv. MLE-1), **Datum laatste reactie**, **Resultaat notitie**.
-- Goran vult deze velden zelf in; bots wijzigen ze niet.
+- Achmed vult deze velden zelf in; bots wijzigen ze niet.
 - Notion-views **Resultaten per aanleiding** en **Resultaten per provincie** (alle kantoren met Mailstatus ≠ Nog niet).
 - Zodra er genoeg data is (richtlijn: ≥ 30 gemailde kantoren), weegt de scout zijn zoektocht naar de aanleiding en provincie met de beste resultaten (Reactie/Proefaccount/Demo/Klant).
 
 ## 📈 Resultaten
-- Notion-velden: **Mailstatus** (Nog niet / Gemaild / Reactie / Proefaccount / Demo / Klant / Geen interesse), **Datum gemaild**, **Gebruikte variant**, **Datum laatste reactie**, **Resultaat notitie**. Alleen Goran vult ze.
+- Notion-velden: **Mailstatus** (Nog niet / Gemaild / Reactie / Proefaccount / Demo / Klant / Geen interesse), **Datum gemaild**, **Gebruikte variant**, **Datum laatste reactie**, **Resultaat notitie**. Alleen Achmed vult ze.
 - In de lijst is er één kolom **Status**: staat Mailstatus op iets anders dan "Nog niet", dan is Mailstatus uit Notion leidend en wordt die getoond; anders de Contactstatus (Niet benaderd / Klaar voor contact / ..., incl. lokale wijzigingen).
 - Tab **Resultaten**: funnel Gemaild → Reactie → Proefaccount → Demo → Klant (een kantoor telt mee in elke stap die het bereikt heeft; Geen interesse telt als gemaild en staat apart), conversie per Overstapaanleiding, per Provincie en per Gebruikte variant. Zonder gemailde kantoren een lege staat.
 - Tab **Hoe het werkt**: team, flow, wat al automatisch gaat en ideeën.
