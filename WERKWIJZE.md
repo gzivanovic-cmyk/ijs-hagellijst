@@ -88,3 +88,7 @@ Past een kantoor niet op het profiel, dan komt het niet in de lijst (of wordt he
 - Opvolgmails FU5-1 en FU12-1 staan inklapbaar eronder. Kopieerknoppen voor onderwerp, tekst en "Kopieer alles". De site verstuurt niets.
 - Bron sjablonen: Notion-pagina "IJS Campagne-concepten". Bij elke sync haalt de agent die op (notion-fetch → private/campagne-concepten.md); parse_templates.py maakt private/templates.json, die versleuteld in de payload gaat. LinkedIn-posts worden niet meegenomen.
 - Kolomkoppen en filterlabels hebben een i-icoon met uitleg (hover, focus of tik; Esc sluit).
+
+## 📡 Signalen (IJS Signalen)
+- Notion-velden **Laatste signaal** (tekst, met bron-URL) en **Datum laatste signaal** (datum), gevuld door IJS Signalen. Ontbreken ze, dan toont de site niets.
+- "Nieuw signaal" = signaal met datum in de laatste 14 dagen: label bij het kantoor, sectie *Signalen* in het dossier (datum, bron, samenvatting, toelichting), filter *Signalen: recente signalen* en de kleine KPI *Recente signalen*.
