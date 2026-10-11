@@ -1,0 +1,75 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive"><title>IJS Hagellijst</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#f5f7fa;color:#1d2433}
+header{background:#14213d;color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+h1{font-size:18px;margin:0}main{padding:16px 20px;max-width:1400px;margin:auto}
+#login{max-width:340px;margin:12vh auto;background:#fff;padding:28px;border-radius:12px;box-shadow:0 4px 20px #0001}
+input,select,button{font:inherit;padding:8px 10px;border:1px solid #cbd2dc;border-radius:8px;background:#fff}
+button{background:#fca311;border:0;color:#14213d;font-weight:600;cursor:pointer}
+#login input{width:100%;margin:10px 0}.err{color:#c0392b;font-size:14px}
+.cards{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.card{background:#fff;border-radius:10px;padding:10px 14px;box-shadow:0 1px 4px #0001;min-width:120px}
+.card b{display:block;font-size:22px}.card span{font-size:12px;color:#5b6577}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;font-size:14px}
+th,td{padding:8px 10px;border-bottom:1px solid #eef1f5;text-align:left;vertical-align:top}th{background:#e9edf3;cursor:pointer;user-select:none;white-space:nowrap}
+tr.row:hover{background:#fff8ea;cursor:pointer}.tag{display:inline-block;background:#e9edf3;border-radius:6px;padding:1px 6px;margin:1px;font-size:12px}
+.pA{background:#fde2e1}.pB{background:#ffeccc}.pC{background:#eee}
+#detail{position:fixed;inset:0;background:#0006;display:none;align-items:center;justify-content:center;padding:16px}
+#detail .box{background:#fff;border-radius:12px;max-width:640px;width:100%;max-height:90vh;overflow:auto;padding:20px}
+dl{display:grid;grid-template-columns:180px 1fr;gap:6px 12px;font-size:14px}dt{color:#5b6577}dd{margin:0}
+@media(max-width:700px){dl{grid-template-columns:1fr}.hide-m{display:none}}
+</style></head><body>
+<header><h1>It's Just Software · Hagellijst</h1><span id="upd" style="font-size:12px"></span></header>
+<div id="login"><h2 style="margin-top:0">Inloggen</h2><form id="lf"><input type="password" id="pw" placeholder="Wachtwoord" autocomplete="current-password" autofocus><button style="width:100%">Openen</button></form><div class="err" id="lerr"></div></div>
+<main id="app" hidden>
+<div class="cards" id="cards"></div>
+<div class="filters">
+<input id="q" placeholder="Zoeken (kantoor, plaats, contact…)" style="flex:1;min-width:200px">
+<select id="fPrio"><option value="">Alle prioriteiten</option></select>
+<select id="fPlaats"><option value="">Alle plaatsen</option></select>
+<select id="fSoft"><option value="">Alle software</option></select>
+<select id="fAanl"><option value="">Alle aanleidingen</option></select>
+<select id="fVer"><option value="">Alle verificatie</option></select>
+<button id="reset" type="button">Reset</button></div>
+<div style="overflow-x:auto"><table><thead><tr id="th"></tr></thead><tbody id="tb"></tbody></table></div>
+<p id="cnt" style="font-size:13px;color:#5b6577"></p></main>
+<div id="detail"><div class="box"><button id="close" style="float:right">Sluiten</button><h2 id="dt"></h2><dl id="dl"></dl></div></div>
+<script>
+const $=id=>document.getElementById(id),b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+let ROWS=[],sortK='Prioriteit',sortD=1;
+const COLS=[['Kantoor','Kantoor'],['Plaats','Plaats'],['Geschat aantal klanten','Klanten'],['Huidige software','Software'],['Overstapaanleiding','Aanleiding'],['Contactpersoon','Contact'],['Prioriteit','Prio'],['Status verificatie','Verificatie'],['Mailstatus','Mailstatus']];
+const FIELDS=['Website','Plaats','Provincie','Geschat aantal klanten','Bron aantal klanten','Dienstverlening','Huidige software','Bron software','Overstapaanleiding','Bron aanleiding','Contactpersoon','Functie','Rol','LinkedIn','Telefoon','E-mail','Prioriteit','Status verificatie','Opmerking verificatie','Vervolgactie','Mailstatus','Datum onderzoek'];
+const arr=v=>v==null?[]:Array.isArray(v)?v:[v];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=v=>Array.isArray(v)?v.map(x=>`<span class="tag">${esc(x)}</span>`).join(''):v==null?'':esc(v);
+const link=(k,v)=>{if(v==null)return '';const s=String(v);if(/^https?:\/\//.test(s))return `<a href="${esc(s)}" target="_blank" rel="noopener">${esc(s)}</a>`;if(k==='E-mail')return `<a href="mailto:${esc(s)}">${esc(s)}</a>`;if(k==='Telefoon')return `<a href="tel:${esc(s)}">${esc(s)}</a>`;return fmt(v)};
+async function decrypt(pw){const e=await (await fetch('data/hagellijst.enc?'+Date.now(),{cache:'no-store'})).json();
+ const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
+ const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(e.salt),iterations:e.iter,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
+ return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(e.iv)},key,b64(e.ct))));}
+$('lf').onsubmit=async ev=>{ev.preventDefault();$('lerr').textContent='Bezig…';
+ try{const d=await decrypt($('pw').value);sessionStorage.setItem('ijs',$('pw').value);start(d)}catch(x){$('lerr').textContent='Onjuist wachtwoord of data niet beschikbaar.'}};
+function opts(id,key){const s=new Set();ROWS.forEach(r=>arr(r[key]).forEach(v=>s.add(v)));[...s].sort().forEach(v=>$(id).insertAdjacentHTML('beforeend',`<option>${esc(v)}</option>`))}
+function start(d){ROWS=d.rows||[];$('login').hidden=true;$('login').style.display='none';$('app').hidden=false;
+ $('upd').textContent='Bijgewerkt: '+new Date(d.updated).toLocaleString('nl-NL');
+ opts('fPrio','Prioriteit');opts('fPlaats','Plaats');opts('fSoft','Huidige software');opts('fAanl','Overstapaanleiding');opts('fVer','Status verificatie');
+ $('th').innerHTML=COLS.map(([k,l],i)=>`<th data-k="${esc(k)}" class="${i>2&&i<6?'hide-m':''}">${l}</th>`).join('');
+ document.querySelectorAll('th').forEach(t=>t.onclick=()=>{sortD=sortK===t.dataset.k?-sortD:1;sortK=t.dataset.k;render()});
+ ['q','fPrio','fPlaats','fSoft','fAanl','fVer'].forEach(i=>$(i).oninput=render);
+ $('reset').onclick=()=>{['q','fPrio','fPlaats','fSoft','fAanl','fVer'].forEach(i=>$(i).value='');render()};render()}
+function filtered(){const q=$('q').value.toLowerCase();
+ return ROWS.filter(r=>(!q||JSON.stringify(r).toLowerCase().includes(q))
+ &&[['fPrio','Prioriteit'],['fPlaats','Plaats'],['fSoft','Huidige software'],['fAanl','Overstapaanleiding'],['fVer','Status verificatie']].every(([id,k])=>!$(id).value||arr(r[k]).includes($(id).value)))}
+function render(){const rs=filtered().sort((a,b)=>{let x=a[sortK],y=b[sortK];x=Array.isArray(x)?x.join():x;y=Array.isArray(y)?y.join():y;
+ if(x==null)return 1;if(y==null)return -1;return (typeof x==='number'?x-y:String(x).localeCompare(String(y),'nl'))*sortD});
+ $('tb').innerHTML=rs.map((r,i)=>`<tr class="row" data-i="${ROWS.indexOf(r)}">`+COLS.map(([k],j)=>`<td class="${j>2&&j<6?'hide-m':''} ${k==='Prioriteit'&&r[k]?'p'+esc(r[k]):''}">${k==='Kantoor'?'<b>'+fmt(r[k])+'</b>':fmt(r[k])}</td>`).join('')+'</tr>').join('')||'<tr><td colspan="9">Geen resultaten</td></tr>';
+ document.querySelectorAll('tr.row').forEach(t=>t.onclick=()=>show(ROWS[t.dataset.i]));
+ $('cnt').textContent=`${rs.length} van ${ROWS.length} kantoren`;
+ const c=(k,v)=>rs.filter(r=>arr(r[k]).includes(v)).length;
+ const cards=[['Totaal',rs.length],['Prio A',c('Prioriteit','A')],['Prio B',c('Prioriteit','B')],['Prio C',c('Prioriteit','C')],['MLE-uitfasering',c('Overstapaanleiding','MLE-uitfasering')],['Weerstand grote lev.',c('Overstapaanleiding','Weerstand grote leverancier')],['Heroverweegt',c('Overstapaanleiding','Heroverweegt software/contract')],['Goedgekeurd',rs.filter(r=>String(r['Status verificatie']||'').startsWith('Goedgekeurd')).length],['Te controleren',c('Status verificatie','Te controleren')],['Gemaild',c('Mailstatus','Gemaild')]];
+ $('cards').innerHTML=cards.map(([l,n])=>`<div class="card"><b>${n}</b><span>${l}</span></div>`).join('')}
+function show(r){$('dt').textContent=r.Kantoor||'';$('dl').innerHTML=FIELDS.filter(k=>r[k]!=null).map(k=>`<dt>${k}</dt><dd>${link(k,r[k])}</dd>`).join('')+(r.url?`<dt>Notion</dt><dd><a href="${esc(r.url)}" target="_blank">Openen in Notion</a></dd>`:'');$('detail').style.display='flex'}
+$('close').onclick=()=>$('detail').style.display='none';$('detail').onclick=e=>{if(e.target.id==='detail')$('detail').style.display='none'};
+const saved=sessionStorage.getItem('ijs');if(saved)decrypt(saved).then(start).catch(()=>sessionStorage.removeItem('ijs'));
+</script></body></html>
