@@ -1,5 +1,5 @@
 <!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Cache-Control" content="no-cache, max-age=0"><meta name="ijs-version" content="2026-10-11d"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer"><title>IJS Hagellijst · It's Just Software</title>
+<meta http-equiv="Cache-Control" content="no-cache, max-age=0"><meta name="ijs-version" content="2026-10-11e"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer"><title>IJS Hagellijst · It's Just Software</title>
 <link rel="icon" href="assets/logo-it.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -99,6 +99,45 @@ table .hid{display:none}
 #dr{width:min(560px,100%)}
 @media(min-width:1200px){#dr{width:38vw;max-width:none;top:57px;height:calc(100% - 57px);box-shadow:-1px 0 0 var(--line)!important}#ov{display:none}body.dopen main#vOv{margin-right:38vw;max-width:none}}
 @media(max-width:820px){.tools{margin-left:0;flex:1 1 100%}.tools .btn{flex:1;justify-content:center}#colsb,#densb{display:none}.cmeta{flex-wrap:wrap}}
+/* ===== Premium Dark / Light ===== */
+[data-theme=dark]{--bg:#0C0D10;--nav:#111216;--card:#17191E;--tbl:#121418;--hover:#1C1F26;--line:#292D35;--ink:#F5F5F5;--ink2:#A1A1AA;--ink3:#8B8B94;--acc:#8B7CF6;--acct:#A99DF9;--accbg:#8B7CF6;--accfg:#0C0D10;--soft:#22222B;--brand2:#A99DF9;--brand-soft:#1F1E2A;--ok:#34D399;--warn:#FBBF24;--bad:#F87171;--neu:#9CA3AF;--pill:#24262C;--sh:none}
+[data-theme=light]{--bg:#FAFAF8;--nav:#FFFFFF;--card:#FFFFFF;--tbl:#FFFFFF;--hover:#F4F4F2;--line:#E6E5E1;--ink:#18181B;--ink2:#52525B;--ink3:#6B6B73;--acc:#8B7CF6;--acct:#5B49D6;--accbg:#5B49D6;--accfg:#FFFFFF;--soft:#F1F0EC;--brand2:#5B49D6;--brand-soft:#F0EEFD;--ok:#059669;--warn:#B45309;--bad:#DC2626;--neu:#6B7280;--pill:#EFEFEC;--sh:none}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif}
+*{transition-duration:.15s!important}
+a{color:var(--acct)}
+header{background:var(--nav);backdrop-filter:none;border-bottom:1px solid var(--line)}.hin{height:60px;padding-top:0;padding-bottom:0}
+.tab{color:var(--ink2);font-weight:500;padding:7px 12px;border-radius:8px}.tab:hover{color:var(--ink);background:var(--hover)}.tab.on{background:var(--soft);color:var(--ink)}
+.tab .cnt{font-size:12px;color:var(--ink2);margin-left:4px}.tab .cnt:empty{display:none}
+.btn{background:transparent;border-color:var(--line);color:var(--ink)}.btn:hover{background:var(--hover)}.btn.ic{width:34px;height:34px;justify-content:center;padding:0;font-weight:600;color:var(--ink2)}.btn.ic.on{background:var(--soft);color:var(--ink)}
+.btn.pri,.btn.primary,.ab.pri{background:var(--accbg);border-color:var(--accbg);color:var(--accfg);font-weight:600}.btn.pri:hover,.btn.primary:hover{background:var(--accbg);filter:brightness(1.08)}
+#login{background:var(--bg)}.lbox{background:var(--card);border-color:var(--line);box-shadow:none}
+.kpi,.bar,.list,.wcard,.csbox,.kv{box-shadow:none!important}
+.kpis{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-bottom:10px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}.kpi:hover{transform:none;border-color:var(--ink3)}.kpi.act{border-color:var(--acc);box-shadow:none}
+.kpi .l{font-size:13px;color:var(--ink2);font-weight:500}.kpi .n{font-size:26px;color:var(--ink);font-weight:600}.kpi .s{font-size:12.5px;color:var(--ink2)}
+.kpis2{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}.kpi.sm{display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:99px;font-size:13px;color:var(--ink2);font:inherit;font-size:13px;cursor:pointer}.kpi.sm b{color:var(--ink);font-weight:600}.kpi.sm .dot{width:7px;height:7px}
+.abar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:12px;padding:12px 16px;margin-bottom:12px;font-size:14px}.abar b{font-weight:600}
+.bar{background:var(--card);border-color:var(--line)}
+select,.search input,.field input{background:var(--bg);border-color:var(--line);color:var(--ink)}
+.list{background:var(--tbl);border-color:var(--line)}
+th{background:var(--tbl);color:var(--ink2);border-bottom:1px solid var(--line);font-weight:500}
+td{border-bottom:1px solid var(--line)}tbody tr:hover{background:var(--hover)}tbody tr.sel{background:var(--hover);box-shadow:inset 3px 0 0 var(--acc)}
+.p1,.org b{color:var(--ink)}.sub{color:var(--ink2)}.cl{color:var(--ink2)}.em a{color:var(--ink)}.em a:hover{color:var(--acct)}
+.st{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--ink);white-space:nowrap}.st i{width:7px;height:7px;border-radius:50%;flex:none}
+.tag{background:var(--pill);color:var(--ink2);border-radius:6px;font-size:12.5px}.tag.sig,[data-theme=dark] .tag.sig{background:var(--pill);color:var(--ink);box-shadow:inset 2px 0 0 var(--warn)}
+.pill,.pA,.pB,.pC,[data-theme=dark] .pA,[data-theme=dark] .pB,[data-theme=dark] .pC{background:var(--pill);color:var(--ink2);font-weight:600}.pA,[data-theme=dark] .pA{color:var(--ink)}
+.ab{border:0;background:none;color:var(--ink2);padding:4px 2px;font-weight:500}.ab.go{color:var(--acct)}tbody tr:hover .ab,.ocard:hover .ab{color:var(--acct)}.ab:hover{text-decoration:underline}
+.vb{background:var(--line)}
+.chip{background:var(--soft);color:var(--ink)}
+.loc{color:var(--warn)}
+.hint{background:var(--soft);color:var(--ink2)}
+#dr{background:var(--card);border-left:1px solid var(--line)}#dr.on{box-shadow:none}.dh{border-color:var(--line)}.kv{background:var(--bg);border-color:var(--line)}.kv dt{color:var(--ink2)}
+.av{border-color:var(--line)}
+#toast{background:var(--ink);color:var(--bg)}
+.menu{background:var(--card);box-shadow:0 8px 24px #0005}
+.empty{color:var(--ink2)}
+@media(max-width:1100px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:820px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.abar{flex-direction:column;align-items:stretch}.abar .btn{justify-content:center}.hin{height:56px}}
 </style></head><body>
 <div id="login"><form class="lbox" id="lf"><img class="logo" src="assets/logo.svg" alt="It's Just Software"><h1>Hagellijst</h1><p>Prospectoverzicht accountants- en boekhoudkantoren. Log in om de versleutelde gegevens te openen.</p>
 <div class="field"><input type="password" id="pw" placeholder="Wachtwoord" autocomplete="current-password" autofocus aria-label="Wachtwoord"></div>
@@ -106,10 +145,10 @@ table .hid{display:none}
 <div class="lock"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>End-to-end versleuteld · ontsleuteling gebeurt alleen in je browser</div></form></div>
 <div id="app" hidden>
 <header><div class="hin"><img class="logo" src="assets/logo.svg" alt="It's Just Software">
-<nav class="tabs"><button class="tab on" data-t="ov">Overzicht</button><button class="tab" data-t="ww">Werkwijze</button></nav>
-<div class="hr"><span class="upd" id="upd"></span><button class="btn" id="theme" title="Licht/donker" aria-label="Thema wisselen">◐</button><button class="btn" id="logout" title="Uitloggen" aria-label="Uitloggen"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg><span class="t">Uitloggen</span></button></div></div></header>
-<main id="vOv"><div class="title"><div><h2>Hagellijst</h2><p>Accountants- en boekhoudkantoren met 10–1.000 klanten</p></div></div>
-<div class="kpis" id="kpis"></div>
+<nav class="tabs" aria-label="Weergave"><button class="tab on" data-t="ov">Kantoren</button><button class="tab" data-t="wv">Werkvoorraad <span class="cnt" id="wvc"></span></button></nav>
+<div class="hr"><button class="btn ic" data-t="ww" id="helpb" title="Werkwijze" aria-label="Werkwijze en uitleg">?</button><span class="upd" id="upd"></span><button class="btn" id="theme" title="Licht/donker" aria-label="Thema wisselen">◐</button><button class="btn" id="logout" title="Uitloggen" aria-label="Uitloggen"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg><span class="t">Uitloggen</span></button></div></div></header>
+<main id="vOv"><div class="title"><div><h2 id="vt">Kantoren</h2><p id="vs">Accountants- en boekhoudkantoren met 10–1.000 klanten</p></div></div>
+<div id="abar"></div><div class="kpis" id="kpis"></div><div class="kpis2" id="kpis2"></div>
 <div class="bar"><label class="search"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" placeholder="Zoek op kantoor, plaats, contact, software…" aria-label="Zoeken"><span class="kbd">/</span></label>
 <select id="fPrio" data-k="Prioriteit" data-l="Prioriteit"></select><select id="fPlaats" data-k="Plaats" data-l="Plaats"></select><select id="fSoft" data-k="Huidige software" data-l="Software"></select><select id="fAanl" data-k="Overstapaanleiding" data-l="Aanleiding"></select><select id="fVer" data-k="Status verificatie" data-l="Verificatie"></select><select id="fVol" data-static aria-label="Volledigheid filter"><option value="">Volledigheid: alle</option><option value="vol">Volledigheid: volledig</option><option value="onv">Volledigheid: onvolledig</option></select><select id="fCs" data-static aria-label="Contactstatus filter"></select><span class="tools"><button class="btn" id="colsb" aria-haspopup="true" aria-expanded="false">Kolommen aanpassen</button><div id="colsm" class="menu" hidden></div><button class="btn" id="densb" aria-pressed="false">Compact</button></span></div>
 <div class="chips" id="chips"></div>
@@ -209,9 +248,9 @@ const $=id=>document.getElementById(id),b64=s=>Uint8Array.from(atob(s),c=>c.char
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const arr=v=>v==null||v===''?[]:Array.isArray(v)?v:[v];
 let D=null,ROWS=[],sortK='Prioriteit',sortD=1,F={};
-const theme=localStorage.getItem('ijs-theme')||'dark';document.documentElement.dataset.theme=theme;
+const theme=localStorage.getItem('ijs-theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=theme;
 $('theme').onclick=()=>{const t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;localStorage.setItem('ijs-theme',t)};
-async function decrypt(pw){const r=await fetch('data/hagellijst.enc?v=2026-10-11d&'+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('net');const e=await r.json();
+async function decrypt(pw){const r=await fetch('data/hagellijst.enc?v=2026-10-11e&'+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('net');const e=await r.json();
  const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(e.salt),iterations:e.iter,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
  return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(e.iv)},key,b64(e.ct))))}
@@ -224,8 +263,10 @@ const initials=n=>(n||'?').replace(/\b(B\.?V\.?|accountants?|accountancy|en|&|ad
 const av=(r,lg)=>r._logo?`<span class="av${lg?' lg':''}"><img src="${r._logo}" alt=""></span>`:`<span class="av${lg?' lg':''}" style="background:${PC[hash(r.Kantoor||'')%PC.length]};border:0">${esc(initials(r.Kantoor))}</span>`;
 const pill=p=>p?`<span class="pill p${esc(p)}">${esc(p)}</span>`:'<span class="muted">–</span>';
 const VC={'Te controleren':'v-te','Goedgekeurd':'v-ok','Goedgekeurd met correcties':'v-cor','Afgewezen':'v-af'};
-const badge=v=>v?`<span class="badge ${VC[v]||''}"><span class="dot" style="background:currentColor"></span>${esc(v)}</span>`:'<span class="muted">–</span>';
-const tags=(v,c='')=>arr(v).map(x=>`<span class="tag ${x!=='Geen bekend'?c:''}">${esc(x)}</span>`).join('')||'<span class="muted">–</span>';
+const VCOL={'Te controleren':'var(--warn)','Goedgekeurd':'var(--ok)','Goedgekeurd met correcties':'var(--ok)','Afgewezen':'var(--bad)'};
+const st=(t,c)=>`<span class="st"><i style="background:${c}"></i>${esc(t)}</span>`;
+const badge=v=>v?st(v,VCOL[v]||'var(--neu)'):'<span class="sub">–</span>';
+const tags=(v,c='')=>arr(v).map(x=>`<span class="tag${c&&x!=='Geen bekend'?' sig':''}">${esc(x)}</span>`).join('')||'<span class="sub">–</span>';
 const linkify=s=>esc(s).replace(/(https?:\/\/[^\s<]+)/g,u=>`<a href="${u}" target="_blank" rel="noopener noreferrer">${u.replace(/^https?:\/\/(www\.)?/,'').slice(0,60)}</a>`);
 const ICO={copy:'<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>'};
 const cp=v=>`<button class="cp" data-c="${esc(v)}" title="Kopiëren" aria-label="Kopieer ${esc(v)}">${ICO.copy}</button>`;
@@ -243,14 +284,16 @@ function setCs(r,s){const L=LL(),id=rid(r),old=cst(r);let d=old.d;if(['Benaderd'
  localStorage.setItem(LK,JSON.stringify(L));toast(`${r.Kantoor}: ${s}`);render();if(curR&&rid(curR)===id&&$('dr').classList.contains('on'))show(curR,1)}
 const pending=()=>ROWS.filter(r=>cst(r).local);
 const fd=t=>t?new Date(t).toLocaleDateString('nl-NL',{day:'numeric',month:'short',year:'numeric'}):'';
-const csb=r=>{const c=cst(r);return `<span class="csb ${CSC[c.s]||'cs0'}">${esc(c.s)}</span>${c.d&&c.s!=='Niet benaderd'&&c.s!=='Klaar voor contact'?`<span class="sub">${fd(c.d)}</span>`:''}${c.local?'<span class="loc" title="Lokaal gewijzigd in deze browser, nog niet in Notion">lokaal, nog niet gesynct</span>':''}`};
+const CSCOL={'Niet benaderd':'var(--neu)','Klaar voor contact':'var(--acc)','Benaderd':'var(--acc)','Reactie ontvangen':'var(--warn)','Gesprek gepland':'var(--acc)','Afgerond':'var(--ok)'};
+const csb=r=>{const c=cst(r);return `${st(c.s,CSCOL[c.s])}${c.d&&c.s!=='Niet benaderd'&&c.s!=='Klaar voor contact'?`<span class="sub">${fd(c.d)}</span>`:''}${c.local?'<span class="loc" title="Lokaal gewijzigd in deze browser, nog niet in Notion">lokaal, nog niet gesynct</span>':''}`};
 function changesText(){const p=pending();return `IJS Hagellijst – contactstatus bijwerken in Notion (${p.length}):\n`+p.map(r=>{const c=cst(r);return `- ${r.Kantoor}${r.id?` [${r.id}]`:''}: Contactstatus = ${c.s}${c.d?`; Laatst benaderd = ${c.d}`:''} (was: ${c.n})`}).join('\n')}
 /* ---- Actie per rij ---- */
 function act(r){const v=r['Status verificatie']||'',c=cst(r).s;
  if(v==='Afgewezen')return ['Reden bekijken','ver'];if(v==='Te controleren'||!v)return ['Controleren','ver'];
  if(c==='Niet benaderd'||c==='Klaar voor contact')return ['Contact voorbereiden','con'];
  if(c==='Benaderd')return ['Reactie registreren','reac'];return ['Bekijken','com']}
-const actb=r=>{const [l,a]=act(r);return `<button class="ab${a==='con'?' pri':''}" data-a="${a}" data-r="${esc(rid(r))}">${l}</button>`};
+const needs=r=>{const v=r['Status verificatie']||'',c=cst(r).s;return v==='Te controleren'||!v||(v.startsWith('Goedgekeurd')&&['Niet benaderd','Klaar voor contact'].includes(c))||c==='Benaderd'};let VIEW='ov';
+const actb=r=>{const [l,a]=act(r);return `<button class="ab${a==='con'||a==='ver'&&l==='Controleren'?' go':''}" data-a="${a}" data-r="${esc(rid(r))}">${l} <span aria-hidden="true">→</span></button>`};
 /* ---- Volledigheid / helpers ---- */
 const VF=[['Geschat aantal klanten','Klanten'],['Huidige software','Software'],['Overstapaanleiding','Aanleiding'],['Contactpersoon','Contact'],['Functie','Functie'],['E-mail','E-mail'],['Telefoon','Telefoon'],['Website','Website'],['Dienstverlening','Dienstverlening'],['Plaats','Plaats']];
 const has=v=>v!=null&&v!==''&&!(Array.isArray(v)&&!v.length)&&!/^onbekend$/i.test(String(v));
@@ -301,15 +344,19 @@ function start(d){D=d;ROWS=d.rows||[];$('login').hidden=true;$('login').style.di
  $('syncb').onclick=()=>{const t=changesText();navigator.clipboard.writeText(t).then(()=>toast('Gekopieerd – stuur dit naar je assistent'),()=>prompt('Kopieer deze tekst:',t))};
  let tm;$('q').oninput=()=>{clearTimeout(tm);tm=setTimeout(render,80)};render();renderWw()}
 function match(r,k,v){if(k==='_vf')return (v==='vol')===(vol(r)===10);if(k==='_cs')return cst(r).s===v;if(k==='_go')return String(r['Status verificatie']||'').startsWith('Goedgekeurd');return arr(r[k]).includes(v)}
-function filtered(){const q=$('q').value.trim().toLowerCase();return ROWS.filter(r=>(!q||JSON.stringify({...r,_logo:0}).toLowerCase().includes(q))&&Object.entries(F).every(([k,v])=>!v||match(r,k,v)))}
+function filtered(){const q=$('q').value.trim().toLowerCase();return ROWS.filter(r=>(VIEW!=='wv'||needs(r))&&(!q||JSON.stringify({...r,_logo:0}).toLowerCase().includes(q))&&Object.entries(F).every(([k,v])=>!v||match(r,k,v)))}
 function sorted(rs){const g=(ALLC[sortK]&&ALLC[sortK].s)||(r=>r[sortK]);return rs.sort((a,b)=>{let x=g(a),y=g(b);if(x==null||x==='')x=null;if(y==null||y==='')y=null;if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return(typeof x==='number'?x-y:String(x).localeCompare(String(y),'nl'))*sortD})}
 const FL={_vf:'Volledigheid',_cs:'Contactstatus',_go:'Verificatie',Prioriteit:'Kans'};
 function setF(k,v){F[k]=v;const sel={_vf:'fVol',_cs:'fCs'}[k];if(sel)$(sel).value=v;const s=document.querySelector(`.bar select[data-k="${k}"]`);if(s)s.value=v;render()}
 function clearAll(){F={};$('q').value='';document.querySelectorAll('.bar select').forEach(s=>s.value='');render()}
 function render(){const rs=sorted(filtered()),C=cols();
  const c=(k,v)=>ROWS.filter(r=>match(r,k,v)).length,nv=ROWS.filter(r=>vol(r)===10).length;
- const K=[['Totaal kantoren',ROWS.length,'#6366F1',null,null,'in de lijst'],['Kans A',c('Prioriteit','A'),'#22C55E','Prioriteit','A','sterkste kansen'],['Kans B',c('Prioriteit','B'),'#F59E0B','Prioriteit','B','goede kansen'],['Kans C',c('Prioriteit','C'),'#94A3B8','Prioriteit','C','profiel past'],['Te controleren',c('Status verificatie','Te controleren'),'#F59E0B','Status verificatie','Te controleren','wacht op Verifier'],['Goedgekeurd',c('_go','1'),'#22C55E','_go','1','incl. correcties'],['Klaar voor contact',ROWS.filter(r=>String(r['Status verificatie']||'').startsWith('Goedgekeurd')&&['Niet benaderd','Klaar voor contact'].includes(cst(r).s)).length,'#38BDF8','_go','1','goedgekeurd, nog niet benaderd'],['Benaderd',c('_cs','Benaderd'),'#A78BFA','_cs','Benaderd','wacht op reactie'],['% volledig',ROWS.length?Math.round(100*nv/ROWS.length)+'%':'–','#6366F1','_vf','vol',`${nv} van ${ROWS.length} (10/10)`]];
- $('kpis').innerHTML=K.map(([l,n,col,k,v,s],i)=>`<button class="kpi${k&&F[k]===v?' act':''}" data-i="${i}" aria-pressed="${!!(k&&F[k]===v)}"><div class="l"><span class="dot" style="background:${col}"></span>${l}</div><div class="n num">${n}</div><div class="s">${s}</div></button>`).join('');
+ const K=[['Totaal',ROWS.length,'var(--neu)',null,null,'kantoren in de lijst'],['Prioriteit A',c('Prioriteit','A'),'var(--neu)','Prioriteit','A','sterkste kansen'],['Prioriteit B',c('Prioriteit','B'),'var(--neu)','Prioriteit','B','goede kansen'],['Prioriteit C',c('Prioriteit','C'),'var(--neu)','Prioriteit','C','profiel past'],['Te controleren',c('Status verificatie','Te controleren'),'var(--warn)','Status verificatie','Te controleren','wacht op beoordeling'],['Goedgekeurd',c('_go','1'),'var(--ok)','_go','1','incl. correcties'],['MLE-uitfasering',c('Overstapaanleiding','MLE-uitfasering'),'var(--warn)','Overstapaanleiding','MLE-uitfasering',''],['Afgewezen',c('Status verificatie','Afgewezen'),'var(--bad)','Status verificatie','Afgewezen',''],['Klaar voor contact',c('_cs','Klaar voor contact'),'var(--acc)','_cs','Klaar voor contact',''],['Benaderd',c('_cs','Benaderd'),'var(--acc)','_cs','Benaderd',''],['Reactie ontvangen',c('_cs','Reactie ontvangen'),'var(--warn)','_cs','Reactie ontvangen',''],['% volledig',ROWS.length?Math.round(100*nv/ROWS.length)+'%':'–','var(--neu)','_vf','vol',`${nv} van ${ROWS.length} (10/10)`]];
+ const tc=c('Status verificatie','Te controleren');$('wvc').textContent=ROWS.filter(needs).length;
+ $('abar').innerHTML=tc?`<div class="abar"><span><b class="num">${tc}</b> kantoren wachten op controle</span><button class="btn pri" id="startb">Start beoordeling →</button></div>`:'';if($('startb'))$('startb').onclick=()=>{clearAll();F['Status verificatie']='Te controleren';$('fVer').value='Te controleren';render();const f=sorted(filtered())[0];if(f){show(f);const tr=document.querySelector(`#tb tr[data-i="${ROWS.indexOf(f)}"]`);tr&&tr.scrollIntoView({block:'nearest'})}};
+ const PK=[0,1,2,4,5];const kb=(i,sm)=>{const [l,n,col,k,v,s]=K[i];const on=!!(k&&F[k]===v);return sm?`<button class="kpi sm${on?' act':''}" data-i="${i}" aria-pressed="${on}"><span class="dot" style="background:${col}"></span>${l}<b class="num">${n}</b></button>`:`<button class="kpi${on?' act':''}" data-i="${i}" aria-pressed="${on}"><div class="l">${l}</div><div class="n num">${n}</div><div class="s">${s}</div></button>`};
+ $('kpis').innerHTML=PK.map(i=>kb(i)).join('');$('kpis2').innerHTML=K.map((_,i)=>i).filter(i=>!PK.includes(i)).map(i=>kb(i,1)).join('');
+ if(0)$('kpis').innerHTML=K.map(([l,n,col,k,v,s],i)=>`<button class="kpi${k&&F[k]===v?' act':''}" data-i="${i}" aria-pressed="${!!(k&&F[k]===v)}"><div class="l"><span class="dot" style="background:${col}"></span>${l}</div><div class="n num">${n}</div><div class="s">${s}</div></button>`).join('');
  document.querySelectorAll('.kpi').forEach(b=>b.onclick=()=>{const [, , ,k,v]=K[b.dataset.i];if(!k)clearAll();else setF(k,F[k]===v?'':v)});
  const ch=Object.entries(F).filter(([,v])=>v).map(([k,v])=>`<span class="chip">${esc(FL[k]||k)}: ${esc(k==='_vf'?(v==='vol'?'volledig':'onvolledig'):k==='_go'?'goedgekeurd':v)}<button data-k="${esc(k)}" aria-label="Verwijder filter ${esc(FL[k]||k)}">×</button></span>`);
  if($('q').value)ch.unshift(`<span class="chip">Zoek: “${esc($('q').value)}”<button data-q="1" aria-label="Wis zoekopdracht">×</button></span>`);
@@ -336,7 +383,7 @@ function val(k,v){if(v==null||v==='')return null;if(k==='Website'||k==='LinkedIn
 const SECS=[['Bedrijfsgegevens','bed',['Website','Plaats','Provincie','Geschat aantal klanten','Bron aantal klanten','Dienstverlening','Huidige software','Bron software']],['Contactpersoon','con',['Contactpersoon','Functie','Rol','E-mail','Telefoon','LinkedIn']],['Verificatie','ver',['Status verificatie','Opmerking verificatie','Datum onderzoek']],['Commerciële beoordeling','com',['Prioriteit','Overstapaanleiding','Bron aanleiding','Vervolgactie']]];
 let lastFocus;
 function show(r,keep,focusSec){curR=r;if(!keep&&!$('dr').classList.contains('on'))lastFocus=document.activeElement;const c=cst(r);
- $('dh').innerHTML=`${av(r,1)}<div style="min-width:0"><h3>${esc(r.Kantoor)}</h3><div class="sub">${esc([r.Plaats,r.Provincie].filter(Boolean).join(', '))}</div><div class="meta" style="margin-top:6px">${pill(r.Prioriteit)}${badge(r['Status verificatie'])}<span class="csb ${CSC[c.s]}">${esc(c.s)}</span></div></div><button class="btn x" id="dx" aria-label="Paneel sluiten (Esc)">✕</button>`;
+ $('dh').innerHTML=`${av(r,1)}<div style="min-width:0"><h3>${esc(r.Kantoor)}</h3><div class="sub">${esc([r.Plaats,r.Provincie].filter(Boolean).join(', '))}</div><div class="meta" style="margin-top:6px">${pill(r.Prioriteit)}${badge(r['Status verificatie'])}${st(c.s,CSCOL[c.s])}</div></div><button class="btn x" id="dx" aria-label="Paneel sluiten (Esc)">✕</button>`;
  const cs=`<div class="csbox"><label for="csSel" class="sub">Contactstatus</label><div class="csrow"><select id="csSel">${CS.map(s=>`<option ${s===c.s?'selected':''}>${s}</option>`).join('')}</select>${c.s!=='Benaderd'&&r['E-mail']?'<button class="btn pri" id="csBen">Markeer als benaderd</button>':''}</div><div class="sub">Laatst benaderd: ${c.d?fd(c.d):'–'}${c.local?` · <span class="loc">lokaal, nog niet gesynct</span> (Notion: ${esc(c.n)})`:' · uit Notion'}</div></div>`;
  $('db').innerHTML=SECS.map(([t,id,ks])=>`<div class="sec" id="sec-${id}"><h5>${t}</h5>${id==='con'&&r['E-mail']&&!['Benaderd','Reactie ontvangen','Gesprek gepland','Afgerond'].includes(c.s)?'<p class="hint">Contact voorbereiden: kopieer het adres en mail vanuit je eigen mailprogramma. Deze site verstuurt niets.</p>':''}<dl class="kv">${ks.map(k=>`<dt>${k}</dt><dd>${!has(r[k])&&NPK[k]&&np(r,k)?dash(r,k):val(k,r[k])??'<span class="sub">Onbekend</span>'}</dd>`).join('')}</dl>${id==='com'?cs:''}</div>`).join('');
  $('dr').classList.add('on');$('ov').classList.add('on');document.body.classList.add('dopen');fit();$('dr').setAttribute('aria-hidden','false');$('dx').onclick=hide;
@@ -348,11 +395,12 @@ $('ov').onclick=hide;
 function toast(t){$('toast').textContent=t;$('toast').classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>$('toast').classList.remove('on'),1800)}
 document.addEventListener('keydown',e=>{const ae=document.activeElement,tag=ae.tagName;
  if(e.key==='Escape'){if(!$('colsm').hidden){$('colsm').hidden=true;$('colsb').focus();return}if($('dr').classList.contains('on'))hide();else if(ae===$('q')){$('q').value='';render();$('q').blur()}return}
- if(e.key==='/'&&!['INPUT','SELECT','TEXTAREA'].includes(tag)&&!$('app').hidden){e.preventDefault();showTab('ov');$('q').focus();return}
+ if(e.key==='/'&&!['INPUT','SELECT','TEXTAREA'].includes(tag)&&!$('app').hidden){e.preventDefault();if(!$('vWw').hidden)showTab('ov');$('q').focus();return}
  const row=ae.closest&&ae.closest('#tb tr,#cl .ocard');
  if(row&&(e.key==='ArrowDown'||e.key==='ArrowUp')){e.preventDefault();const list=[...row.parentElement.children];const n=list[list.indexOf(row)+(e.key==='ArrowDown'?1:-1)];if(n){n.focus();if($('dr').classList.contains('on'))show(ROWS[n.dataset.i],1)}return}
  if(row&&e.key==='Enter'&&ae===row){e.preventDefault();show(ROWS[row.dataset.i])}});
-function showTab(t){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.t===t));$('vOv').hidden=t!=='ov';$('vWw').hidden=t!=='ww';fit()}
+function showTab(t){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.t===t));$('helpb').classList.toggle('on',t==='ww');$('vOv').hidden=t==='ww';$('vWw').hidden=t!=='ww';if(t!=='ww'){VIEW=t;$('vt').textContent=t==='wv'?'Werkvoorraad':'Kantoren';$('vs').textContent=t==='wv'?'Alleen kantoren die aandacht nodig hebben: te controleren, klaar voor contact of reactie te registreren':'Accountants- en boekhoudkantoren met 10–1.000 klanten';if(D)render()}fit()}
+$('helpb').onclick=()=>showTab('ww');
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>showTab(b.dataset.t));
 function renderWw(){const st=['Te controleren','Goedgekeurd','Goedgekeurd met correcties','Afgewezen'];
  $('wstat').innerHTML=`<div class="kpi"><div class="l">Laatst bijgewerkt</div><div class="n" style="font-size:16px;margin-top:6px">${esc(new Date(D.updated).toLocaleString('nl-NL',{dateStyle:'medium',timeStyle:'short'}))}</div><div class="s">${ROWS.length} kantoren</div></div>`+st.map(s=>`<div class="kpi"><div class="l">${badge(s)}</div><div class="n num">${ROWS.filter(r=>r['Status verificatie']===s).length}</div></div>`).join('')}
