@@ -3,10 +3,13 @@ const fs=require('fs'),crypto=require('crypto');
 const [,,inF,outF,pwF]=process.argv;
 const pw=fs.readFileSync(pwF,'utf8').trim();
 let raw=JSON.parse(fs.readFileSync(inF,'utf8'));
-const rows=(Array.isArray(raw)?raw:raw.results||[]).map(r=>{const o={};for(const[k,v]of Object.entries(r)){let key=k,val=v;
+const logos=fs.existsSync('private/logos.json')?JSON.parse(fs.readFileSync('private/logos.json','utf8')):{};
+const dom=w=>{try{return new URL(/:\/\//.test(w)?w:'https://'+w).hostname.toLowerCase().replace(/^www\./,'')}catch(e){return null}};
+const rows0=(Array.isArray(raw)?raw:raw.results||[]).map(r=>{const o={};for(const[k,v]of Object.entries(r)){let key=k,val=v;
  if(k.startsWith('date:')){if(!k.endsWith(':start'))continue;key=k.split(':')[1];}
  if(typeof val==='string'&&val.startsWith('[')){try{val=JSON.parse(val)}catch(e){}}
  if(val!==null&&val!=='')o[key]=val;}return o;});
+const rows=rows0.map(o=>{const d=dom(o.Website||'');if(d){o._domain=d;if(logos[d])o._logo=logos[d];}return o;});
 const payload=Buffer.from(JSON.stringify({updated:new Date().toISOString(),rows}));
 const salt=crypto.randomBytes(16),iv=crypto.randomBytes(12),iter=310000;
 const key=crypto.pbkdf2Sync(pw,salt,iter,32,'sha256');

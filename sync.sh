@@ -11,6 +11,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 [ -f private/hagellijst.json ] || { echo "private/hagellijst.json ontbreekt"; exit 1; }
 [ -f .password ] || { echo ".password ontbreekt"; exit 1; }
+python3 fetch_logos.py || echo "Logo-ophalen mislukt, ga door zonder"
 node encrypt.js private/hagellijst.json data/hagellijst.enc .password
 git add -A
 if git ls-files | grep -Eq '^(private/|\.password)'; then echo "FOUT: geheime bestanden gestaged"; exit 1; fi
