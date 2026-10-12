@@ -1,5 +1,5 @@
 <!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Cache-Control" content="no-cache, max-age=0"><meta name="ijs-version" content="2026-10-11p"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer"><title>IJS Hagellijst · It's Just Software</title>
+<meta http-equiv="Cache-Control" content="no-cache, max-age=0"><meta name="ijs-version" content="2026-10-12b"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer"><title>IJS Hagellijst · It's Just Software</title>
 <link rel="icon" href="assets/logo-it.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -243,6 +243,14 @@ main#vRe,main#vHw{max-width:1400px;margin:0 auto;padding:20px clamp(16px,3vw,48p
 @media(max-width:767px){.hw2{grid-template-columns:1fr}.flow{flex-direction:column;gap:22px}.flow li{margin-right:0}.flow li:not(.fback):not(:nth-last-child(2))::after{content:"↓";right:auto;left:50%;top:auto;bottom:-20px;transform:translateX(-50%)}.fs{grid-template-columns:1fr 40px}.fs .fb{grid-column:1/-1;order:3}main#vRe,main#vHw{padding-bottom:100px}.bn{font-size:11px}}
 @media(min-width:1024px){.team{grid-template-columns:repeat(3,1fr)}}
 .li{display:inline-flex;vertical-align:-2px;margin-left:6px;color:var(--ink2);border-radius:3px}.li:hover,.li:focus-visible{color:#0A66C2}.lid{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}.lid .li{margin-left:0}
+.fbtab{position:fixed;right:0;top:50%;z-index:30;transform:translateY(-50%);writing-mode:vertical-rl;transform-origin:center;rotate:180deg;background:#E5E7EB;color:#374151;border:1px solid #D1D5DB;border-right:0;border-radius:0 8px 8px 0;padding:12px 6px;font:600 12px/1 inherit;font-family:inherit;letter-spacing:.04em;cursor:pointer;opacity:.85;box-shadow:0 1px 4px rgba(0,0,0,.15)}.fbtab:hover,.fbtab:focus-visible{opacity:1;outline:2px solid var(--acc);outline-offset:1px}
+#fbd{border:0;border-radius:16px;background:#fff;color:#111827;padding:0;width:min(480px,calc(100vw - 32px));max-height:calc(100dvh - 32px);box-shadow:0 20px 60px rgba(0,0,0,.35)}#fbd::backdrop{background:rgba(0,0,0,.55)}
+#fbf{display:flex;flex-direction:column;gap:6px;padding:20px 22px 22px}.fbh{display:flex;justify-content:space-between;align-items:center}.fbh h3{margin:0;font-size:18px;color:#111827}#fbf p{margin:0 0 10px;font-size:14px;color:#4B5563}#fbf label{font-size:13px;font-weight:600;margin-top:8px;color:#111827}
+.fbic{border:0;background:none;color:#6B7280;font-size:16px;cursor:pointer;padding:6px;border-radius:8px}.fbic:hover{background:#F3F4F6}
+#fbf select{width:100%!important;max-width:none!important}#fbf select,#fbf textarea{font:inherit;font-size:16px;color:#111827;background:#fff;border:1px solid #D1D5DB;border-radius:10px;padding:10px 12px;width:100%;box-sizing:border-box}#fbf textarea{resize:vertical;min-height:120px}#fbf textarea::placeholder{color:#6B7280}#fbf :focus-visible{outline:2px solid #6366F1;outline-offset:1px}
+.fbcnt{align-self:flex-end;font-size:12px;color:#6B7280}.fbok{font-size:13px;color:#047857;font-weight:600}.fbok:empty{display:none}.fba{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
+.fbbtn{font:inherit;font-size:14px;font-weight:600;border-radius:10px;padding:10px 18px;cursor:pointer;border:1px solid #D1D5DB;background:#fff;color:#111827}.fbbtn:hover{background:#F3F4F6}.fbbtn.pri{background:#6366F1;border-color:#6366F1;color:#fff}.fbbtn.pri:hover{background:#4F46E5}.fbbtn.pri.off{background:#E5E7EB;border-color:#E5E7EB;color:#6B7280;cursor:not-allowed}
+@media(max-width:767px){.fbtab{top:auto;bottom:calc(150px + env(safe-area-inset-bottom));transform:none;padding:10px 4px;font-size:11px}.fba .fbbtn{flex:1}}
 </style></head><body>
 <div id="login"><form class="lbox" id="lf"><img class="logo" src="assets/logo.svg" alt="It's Just Software"><h1>Hagellijst</h1><p>Prospectoverzicht accountants- en boekhoudkantoren. Log in om de versleutelde gegevens te openen.</p>
 <div class="field"><input type="password" id="pw" placeholder="Wachtwoord" autocomplete="current-password" autofocus aria-label="Wachtwoord"></div>
@@ -395,7 +403,7 @@ const arr=v=>v==null||v===''?[]:Array.isArray(v)?v:[v];
 let D=null,ROWS=[],sortK='Prioriteit',sortD=1,F={};
 const theme=localStorage.getItem('ijs-theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=theme;
 $('theme').onclick=()=>{const t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;localStorage.setItem('ijs-theme',t)};
-async function decrypt(pw){const r=await fetch('data/hagellijst.enc?v=2026-10-11p&'+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('net');const e=await r.json();
+async function decrypt(pw){const r=await fetch('data/hagellijst.enc?v=2026-10-12b&'+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('net');const e=await r.json();
  const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(e.salt),iterations:e.iter,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
  return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(e.iv)},key,b64(e.ct))))}
@@ -681,4 +689,22 @@ document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>showTab(b.dataset.t))
 function renderWw(){const st=['Te controleren','Goedgekeurd','Goedgekeurd met correcties','Afgewezen'];
  $('wstat').innerHTML=`<div class="kpi"><div class="l">Laatst bijgewerkt</div><div class="n" style="font-size:16px;margin-top:6px">${esc(new Date(D.updated).toLocaleString('nl-NL',{dateStyle:'medium',timeStyle:'short'}))}</div><div class="s">${ROWS.length} kantoren</div></div>`+st.map(s=>`<div class="kpi"><div class="l">${badge(s)}</div><div class="n num">${ROWS.filter(r=>r['Status verificatie']===s).length}</div></div>`).join('')}
 const saved=sessionStorage.getItem('ijs');if(saved){$('lb').innerHTML='<span class="spin"></span> Ontsleutelen…';decrypt(saved).then(start).catch(()=>{sessionStorage.removeItem('ijs');$('lb').textContent='Inloggen'})}
+</script><button type="button" class="fbtab" id="fbb" aria-haspopup="dialog">Feedback</button>
+<dialog id="fbd" aria-labelledby="fbt" aria-describedby="fbsub"><form id="fbf" novalidate><div class="fbh"><h3 id="fbt">Feedback sturen</h3><button type="button" class="fbic" id="fbx" aria-label="Sluiten">✕</button></div>
+<p id="fbsub">Heb je een idee of loop je ergens tegenaan? Laat het ons weten.</p>
+<label for="fbty">Type</label><select id="fbty"><option>Idee delen</option><option>Fout melden</option><option>Aanpassing</option><option>Nieuwe functie</option></select>
+<label for="fbtx">Bericht</label><textarea id="fbtx" rows="6" maxlength="2000" required aria-required="true" aria-describedby="fbcnt" placeholder="Beschrijf zo duidelijk mogelijk wat je wilt delen."></textarea><span id="fbcnt" class="fbcnt" aria-live="off">0 / 2000</span>
+<div class="fbok" id="fbok" role="status" aria-live="polite"></div>
+<div class="fba"><button type="button" class="fbbtn" id="fbc">Annuleren</button><button type="submit" class="fbbtn pri" id="fbs" aria-disabled="true">Versturen</button></div></form></dialog>
+<script>
+(()=>{const d=document.getElementById('fbd'),g=i=>document.getElementById(i),TO='g.zivanovic@mail.grokbot.com';let back=null;
+window.fbHref=(t,x)=>'mailto:'+TO+'?subject='+encodeURIComponent('IJS feedback: '+t)+'&body='+encodeURIComponent(x.trim());
+const upd=()=>{const n=g('fbtx').value.length;g('fbcnt').textContent=n+' / 2000';const off=!g('fbtx').value.trim();g('fbs').toggleAttribute('disabled',off);g('fbs').classList.toggle('off',off);g('fbs').setAttribute('aria-disabled',off)};
+window.openFb=()=>{back=document.activeElement;g('fbok').textContent='';upd();d.showModal();g('fbty').focus()};
+const close=()=>d.close();d.addEventListener('close',()=>{if(back&&back.focus)back.focus()});
+g('fbb').onclick=openFb;g('fbx').onclick=close;g('fbc').onclick=close;g('fbtx').oninput=upd;
+d.addEventListener('click',e=>{if(e.target===d)close()});
+d.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();e.stopPropagation();close()}if(e.key!=='Tab')return;const f=[...d.querySelectorAll('button,select,textarea')].filter(x=>!x.disabled&&x.offsetParent),a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}});
+g('fbf').onsubmit=e=>{e.preventDefault();const x=g('fbtx').value;if(!x.trim())return;const href=fbHref(g('fbty').value,x);window.lastFbHref=href;g('fbok').textContent='Bedankt! Je mailprogramma opent om het te versturen.';location.href=href};
+})();
 </script></body></html>
