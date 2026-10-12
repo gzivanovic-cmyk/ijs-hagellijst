@@ -1,5 +1,5 @@
 <!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Cache-Control" content="no-cache, max-age=0"><meta name="ijs-version" content="2026-10-12c"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer"><title>IJS Hagellijst · It's Just Software</title>
+<meta http-equiv="Cache-Control" content="no-cache, max-age=0"><meta name="ijs-version" content="2026-10-12d"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer"><title>IJS Hagellijst · It's Just Software</title>
 <link rel="icon" href="assets/logo-it.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -177,7 +177,7 @@ td{border-bottom:1px solid var(--line)}tbody tr:hover{background:var(--hover)}tb
 #tip{position:absolute;z-index:80;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px 11px;font-size:13px;line-height:1.45;box-shadow:0 8px 24px #0006;pointer-events:none;text-transform:none;letter-spacing:0;font-weight:400}
 .cm{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:10px}.cmhd{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.cmhd select.sm{padding:5px 28px 5px 10px;font-size:13px;max-width:none}
 .cmrow{display:grid;gap:3px}.cmsub{font-weight:600;color:var(--ink);display:flex;gap:6px;align-items:flex-start}.cmtxt{white-space:pre-wrap;font:14px/1.55 Inter,sans-serif;color:var(--ink);margin:0;max-height:340px;overflow:auto;border-top:1px solid var(--line);padding-top:10px}
-.cmact{display:flex;gap:8px;flex-wrap:wrap}.btn.sm{padding:6px 11px;font-size:13px}.fus{display:grid;gap:6px;border-top:1px solid var(--line);padding-top:8px}.fu summary{cursor:pointer;color:var(--ink);font-size:13.5px;padding:4px 0}.fu[open]{display:grid;gap:8px}
+.btn.om{text-decoration:none;display:inline-flex;align-items:center}.btn.om[disabled]{opacity:.45;cursor:not-allowed}.omh{margin:2px 0 0;overflow-wrap:anywhere}.cmact{display:flex;gap:8px;flex-wrap:wrap}.btn.sm{padding:6px 11px;font-size:13px}.fus{display:grid;gap:6px;border-top:1px solid var(--line);padding-top:8px}.fu summary{cursor:pointer;color:var(--ink);font-size:13.5px;padding:4px 0}.fu[open]{display:grid;gap:8px}
 .shl{display:flex;align-items:center}
 /* ===== Split-view dossier ===== */
 .dhr{display:flex;gap:14px;align-items:center;width:100%}
@@ -404,7 +404,7 @@ const arr=v=>v==null||v===''?[]:Array.isArray(v)?v:[v];
 let D=null,ROWS=[],sortK='Prioriteit',sortD=1,F={};
 const theme=localStorage.getItem('ijs-theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=theme;
 $('theme').onclick=()=>{const t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;localStorage.setItem('ijs-theme',t)};
-async function decrypt(pw){const r=await fetch('data/hagellijst.enc?v=2026-10-12c&'+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('net');const e=await r.json();
+async function decrypt(pw){const r=await fetch('data/hagellijst.enc?v=2026-10-12d&'+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('net');const e=await r.json();
  const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(e.salt),iterations:e.iter,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
  return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(e.iv)},key,b64(e.ct))))}
@@ -455,16 +455,20 @@ function aanl(r,code){const a=arr(r.Overstapaanleiding),k=r.Kantoor||'jullie kan
  if(a.includes('Drempel/support'))return `Ik begreep dat de stap naar nieuwe software voor ${k} een drempel kan zijn.`;return ''}
 function fillT(t,r,code,orig){const v=voornaam(r);let s=t.replace(/Hoi \{voornaam\},/g,v?`Hoi ${v},`:'Goedendag,').replace(/\{voornaam\}/g,v||'').replace(/\{kantoor\}/g,r.Kantoor||'').replace(/\{aanleiding\}\s*/g,a=>{const x=aanl(r,code);return x?x+' ':''}).replace(/\{oorspronkelijk onderwerp\}/g,orig||'');return s.replace(/ +\n/g,'\n')}
 let CODE={};
+const BCC='g.zivanovic@mail.grokbot.com';
+const mHref=(to,sub,txt)=>'mailto:'+encodeURIComponent(to||'').replace(/%40/g,'@')+'?bcc='+encodeURIComponent(BCC).replace(/%40/g,'@')+(sub?'&subject='+encodeURIComponent(sub):'')+(txt?'&body='+encodeURIComponent(String(txt).replace(/\r?\n/g,'\r\n')):'');
+const omBtn=(r,sub,txt)=>{const em=String(r['E-mail']||'').trim();return em?`<a class="btn sm pri om" href="${esc(mHref(em,sub,txt))}">Open in mail</a>`:`<button class="btn sm pri om" disabled title="Geen e-mailadres bekend">Open in mail</button>`};
+const omHint=r=>String(r['E-mail']||'').trim()?`<p class="sub sm omh">BCC naar ${BCC} staat er al in, zodat de status automatisch wordt bijgewerkt.</p>`:`<p class="sub sm omh">Geen e-mailadres bekend voor dit kantoor; kopieer de tekst en voeg het adres zelf toe (met ${BCC} in BCC).</p>`;
 function camp(r){const T=TPL(),id=rid(r);
  if(r['Campagne tekst'])return {def:1,code:r['Campagne code']||'',sub:r['Campagne onderwerp']||'',txt:r['Campagne tekst']};
  const code=CODE[id]||r['Campagne code']||autoCode(r),t=T[code];if(!t)return null;return {def:0,code,sub:fillT(t.onderwerp,r,code),txt:fillT(t.tekst,r,code)}}
 function campHtml(r){const c=camp(r),T=TPL();if(!c)return '<p class="sub">Geen sjablonen beschikbaar (volgende sync).</p>';
  const codes=['MLE-1','CONTRACT-1','SUPPORT-1'].filter(k=>T[k]);
- const fu=['FU5-1','FU12-1'].filter(k=>T[k]).map(k=>{const s=fillT(T[k].onderwerp,r,k,c.sub),t=fillT(T[k].tekst,r,k,c.sub);return `<details class="fu"><summary>${esc(k)} · ${esc(T[k].titel)}</summary><div class="cmrow"><span class="sub">Onderwerp</span><div class="cmsub">${esc(s)}${cp(s)}</div></div><pre class="cmtxt">${esc(t)}</pre><div class="cmact"><button class="btn sm" data-cc="${esc(t)}">Kopieer tekst</button><button class="btn sm" data-cc="${esc('Onderwerp: '+s+'\n\n'+t)}">Kopieer alles</button></div></details>`}).join('');
+ const fu=['FU5-1','FU12-1'].filter(k=>T[k]).map(k=>{const s=fillT(T[k].onderwerp,r,k,c.sub),t=fillT(T[k].tekst,r,k,c.sub);return `<details class="fu"><summary>${esc(k)} · ${esc(T[k].titel)}</summary><div class="cmrow"><span class="sub">Onderwerp</span><div class="cmsub">${esc(s)}${cp(s)}</div></div><pre class="cmtxt">${esc(t)}</pre><div class="cmact">${omBtn(r,s,t)}<button class="btn sm" data-cc="${esc(t)}">Kopieer tekst</button><button class="btn sm" data-cc="${esc('Onderwerp: '+s+'\n\n'+t)}">Kopieer alles</button></div>${omHint(r)}</details>`}).join('');
  return `<div class="cmhd"><span class="st"><i style="background:${c.def?'var(--ok)':'var(--neu)'}"></i>${c.def?'Definitief':'Concept uit sjabloon'}</span>${c.def?(c.code?`<span class="tag">${esc(c.code)}</span>`:''):`<label class="sub" for="cmSel">Sjabloon</label><select id="cmSel" class="sm">${codes.map(k=>`<option ${k===c.code?'selected':''} value="${k}">${k}${k===autoCode(r)?' (aanbevolen)':''}</option>`).join('')}</select>`}</div>
  <div class="cmrow"><span class="sub">Onderwerp</span><div class="cmsub">${esc(c.sub)}${cp(c.sub)}</div></div>
  <pre class="cmtxt">${esc(c.txt)}</pre>
- <div class="cmact"><button class="btn sm" data-cc="${esc(c.txt)}">Kopieer tekst</button><button class="btn sm pri" data-cc="${esc('Onderwerp: '+c.sub+'\n\n'+c.txt)}">Kopieer alles</button></div>
+ <div class="cmact">${omBtn(r,c.sub,c.txt)}<button class="btn sm" data-cc="${esc(c.txt)}">Kopieer tekst</button><button class="btn sm" data-cc="${esc('Onderwerp: '+c.sub+'\n\n'+c.txt)}">Kopieer alles</button></div>${omHint(r)}
  ${!c.def?`<p class="sub sm">${voornaam(r)?'':'Geen persoonsnaam bekend: neutrale aanhef. '}Controleer de tekst voor gebruik. De site verstuurt niets.</p>`:''}${fu?`<div class="fus"><span class="sub">Opvolgmails</span>${fu}</div>`:''}`}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-cc]');if(b){navigator.clipboard.writeText(b.dataset.cc).then(()=>toast('Gekopieerd'),()=>toast('Kopiëren mislukt'))}});
 /* ---- Kolomuitleg ---- */
@@ -629,7 +633,7 @@ function bodyHtml(r){const c=cst(r);
  +sec('cm','Campagnemail',`<div class="cm">${campHtml(r)}</div>`)}
 function actions(r){const c=cst(r),em=r['E-mail'],[al,aa]=act(r),A=[];
  if(aa==='ver')A.push([al,()=>openSec(r,'ver')]);else if(aa==='con'&&em)A.push(['Contact voorbereiden',()=>openSec(r,'cm')]);else A.push(['Bekijk contact',()=>openSec(r,'con')]);
- const M=[];if(em){M.push(['Kopieer e-mail',()=>navigator.clipboard.writeText(em).then(()=>toast('Gekopieerd: '+em))]);M.push(['Mail openen',()=>{location.href='mailto:'+em}])}
+ const M=[];if(em){M.push(['Kopieer e-mail',()=>navigator.clipboard.writeText(em).then(()=>toast('Gekopieerd: '+em))]);M.push(['Mail openen',()=>{location.href=mHref(em)}])}
  M.push(['Campagnemail tonen',()=>openSec(r,'cm')],['Verificatie tonen',()=>openSec(r,'ver')]);return [A[0],M.filter(m=>m[0]!==A[0][0])]}
 function openSec(r,id){SO[id]=1;localStorage.setItem(SO_K,JSON.stringify(SO));const d=$('sec-'+id);if(d){d.open=true;d.scrollIntoView({block:'start',behavior:'smooth'});const f=d.querySelector('.cp,select,a,button');f&&f.focus({preventScroll:true})}}
 function show(r,keep,focusSec){if(!r)return;const was=$('dr').classList.contains('on');curR=r;if(!keep&&!was)lastFocus=document.activeElement;const c=cst(r);const st0=keep?$('db').scrollTop:0;
