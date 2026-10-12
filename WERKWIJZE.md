@@ -65,6 +65,12 @@ Past een kantoor niet op het profiel, dan komt het niet in de lijst (of wordt he
 2. **IJS Verifier** controleert: bestaat het kantoor (KVK/website), heeft het een samenstelpraktijk, klopt de omvang, klopt het contact, kloppen de bronnen. Zet daarna Goedgekeurd / Goedgekeurd met correcties / Afgewezen.
 3. **Sync**: de Notion-rijen worden versleuteld naar deze site gezet.
 
+## 🔁 Sync-methode (sinds 12-10-2026)
+- De rijen komen uit de opgeslagen weergave **"Default view"** van IJS Hagellijst: `view://31deaab4-e04b-4381-bd3d-a2bdff5ac9f7` (database https://app.notion.com/p/a35522cf5dd2464ea351a5435872ceba, data source `collection://a079827b-1782-4eca-975f-37a02b20761f`). Die view heeft geen filters en toont alle kolommen.
+- Ophalen met `notion-query-data-sources` in **view-modus** (`page_size` 100, pagineren met `next_cursor` tot `has_more` false is). View-modus heeft geen eigen query-limiet; de oude SQL-methode liep steeds tegen `usage_limit_reached`.
+- `normalize_view.py` zet de pagina's om naar `private/hagellijst.json` in het vaste formaat (Markdown-links terug naar tekst). Daarna `./sync.sh`.
+- Wordt ook de view-modus geblokkeerd, dan wordt er niets gepusht en volgt een melding.
+
 ## 🔒 Privacy en AVG
 - De data op de site is versleuteld (AES-256-GCM), niet vindbaar voor zoekmachines (noindex) en alleen te openen met het wachtwoord.
 - Ga je zelf mailen: let op de AVG en de Telecommunicatiewet. Gebruik zakelijke adressen, een duidelijke afzender en een afmeldlink.
