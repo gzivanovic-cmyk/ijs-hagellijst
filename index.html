@@ -1,5 +1,5 @@
 <!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Cache-Control" content="no-cache, max-age=0"><meta name="ijs-version" content="2026-10-12b"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer"><title>IJS Hagellijst · It's Just Software</title>
+<meta http-equiv="Cache-Control" content="no-cache, max-age=0"><meta name="ijs-version" content="2026-10-12c"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer"><title>IJS Hagellijst · It's Just Software</title>
 <link rel="icon" href="assets/logo-it.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -91,7 +91,7 @@ table .hid{display:none}
 .ab:focus-visible,.btn:focus-visible,.cp:focus-visible,.kpi:focus-visible,select:focus-visible{outline:2px solid #A5B4FC;outline-offset:2px}
 .kpi.act{border-color:#6366F1;box-shadow:0 0 0 2px #6366F155}.kpi .s{color:var(--ink2)}
 .tools{position:relative;display:flex;gap:8px;margin-left:auto}.menu{position:absolute;right:0;top:calc(100% + 6px);z-index:30;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:0 12px 40px #0008;min-width:210px}.menu label{display:flex;gap:8px;align-items:center;padding:4px 0;font-size:14px;cursor:pointer}
-.foot{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--ink2)}#syncb{margin-left:auto}
+.foot{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--ink2)}
 .hint{font-size:13px;color:var(--ink2);background:var(--brand-soft);border-radius:10px;padding:8px 12px;margin:0 0 8px}
 .csbox{margin-top:10px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:8px}.csrow{display:flex;gap:8px;flex-wrap:wrap}.csrow select{max-width:none}
 .sec.flash .kv{animation:fl 1.2s}@keyframes fl{0%{border-color:#6366F1;box-shadow:0 0 0 3px #6366F144}}
@@ -267,7 +267,7 @@ main#vRe,main#vHw{max-width:1400px;margin:0 auto;padding:20px clamp(16px,3vw,48p
 <select id="fPrio" data-k="Prioriteit" data-l="Prioriteit"></select><select id="fPlaats" data-k="Plaats" data-l="Plaats"></select><select id="fSoft" data-k="Huidige software" data-l="Software"></select><select id="fAanl" data-k="Overstapaanleiding" data-l="Aanleiding"></select><select id="fVer" data-k="Status verificatie" data-l="Verificatie"></select><select id="fLi" data-static aria-label="LinkedIn filter"><option value="">LinkedIn: alle</option><option value="met">Met LinkedIn</option><option value="zonder">Zonder LinkedIn</option></select><select id="fVol" data-static aria-label="Volledigheid filter"><option value="">Volledigheid: alle</option><option value="vol">Volledigheid: volledig</option><option value="onv">Volledigheid: onvolledig</option></select><select id="fSig" data-static aria-label="Signalen filter"><option value="">Signalen: alle</option><option value="1">Recente signalen (14 d)</option></select><select id="fCs" data-static aria-label="Contactstatus filter"></select><span class="tools"><button class="btn" id="colsb" aria-haspopup="true" aria-expanded="false">Kolommen aanpassen</button><div id="colsm" class="menu" hidden></div><button class="btn" id="densb" aria-pressed="false">Compact</button></span></div>
 <div class="qc" id="qc" role="toolbar" aria-label="Snelfilters"></div><div class="chips" id="chips"></div>
 <div class="split" id="split"><div class="lp"><div class="list"><div class="tbl"><table><thead><tr id="th"></tr></thead><tbody id="tb"></tbody></table></div><div class="cards" id="cl"></div><div id="es"></div></div>
-<div class="foot"><span id="cnt"></span><button class="btn pri" id="syncb" hidden><span>Kopieer wijzigingen</span></button></div></div><div class="gut" id="gut" role="separator" tabindex="0" aria-orientation="vertical" aria-controls="dr" aria-valuemin="35" aria-valuemax="65" aria-valuenow="40" aria-label="Breedte dossierpaneel (pijltjes; Enter of dubbelklik = standaard)" title="Sleep om de breedte te wijzigen; dubbelklik = standaard"></div><aside id="dr" aria-hidden="true" aria-label="Dossier"><div class="dh" id="dh"></div><div class="db" id="db"></div><div class="df" id="df"></div></aside></div></main>
+<div class="foot"><span id="cnt"></span></div></div><div class="gut" id="gut" role="separator" tabindex="0" aria-orientation="vertical" aria-controls="dr" aria-valuemin="35" aria-valuemax="65" aria-valuenow="40" aria-label="Breedte dossierpaneel (pijltjes; Enter of dubbelklik = standaard)" title="Sleep om de breedte te wijzigen; dubbelklik = standaard"></div><aside id="dr" aria-hidden="true" aria-label="Dossier"><div class="dh" id="dh"></div><div class="db" id="db"></div><div class="df" id="df"></div></aside></div></main>
 <main id="vHw" hidden><div class="title"><div><h2>Hoe het werkt</h2><p>Een klein team van assistenten zoekt, controleert en houdt de lijst bij. Jij beslist wie je benadert. Niemand anders mailt of belt.</p></div></div>
 <h3 class="hh">Het team</h3>
 <div class="team">
@@ -276,7 +276,7 @@ main#vRe,main#vHw{max-width:1400px;margin:0 auto;padding:20px clamp(16px,3vw,48p
 <div class="tc"><div class="ti" aria-hidden="true">📡</div><b>IJS Signalen</b><p>Volgt nieuws, vacatures en LinkedIn van goedgekeurde kantoren. Vult <i>Laatste signaal</i> en kan de prioriteit verhogen.</p><span class="rh">Dagelijks ±08:20</span></div>
 <div class="tc"><div class="ti" aria-hidden="true">🔒</div><b>IJS Webbeheer</b><p>De enige die deze site bijwerkt. Haalt alles uit Notion, versleutelt de data en controleert na elke update.</p><span class="rh">Werkdagen ±07:30 · en na elke melding</span></div>
 <div class="tc"><div class="ti" aria-hidden="true">✍️</div><b>IJS Campagne</b><p>Schrijft mail- en LinkedIn-concepten, alleen op verzoek van Achmed. Verstuurt nooit iets.</p><span class="rh">Op verzoek</span></div>
-<div class="tc you"><div class="ti" aria-hidden="true">👤</div><b>Achmed</b><p>Beslist wie hij mailt. Vult de resultaatvelden (Mailstatus, variant, reactie) en de uitsluitingslijst (klanten, in gesprek).</p><span class="rh">Wanneer het hem uitkomt</span></div>
+<div class="tc you"><div class="ti" aria-hidden="true">👤</div><b>Achmed</b><p>Beslist wie hij mailt en zet bij elke mail <b>g.zivanovic@mail.grokbot.com</b> in de BCC. Antwoorden van kantoren stuurt hij door naar dat adres.</p><span class="rh">Wanneer het hem uitkomt</span></div>
 </div>
 <h3 class="hh">De flow</h3>
 <ol class="flow" aria-label="Stroomschema">
@@ -291,7 +291,7 @@ main#vRe,main#vHw{max-width:1400px;margin:0 auto;padding:20px clamp(16px,3vw,48p
 <li>Site-sync uit Notion met AES-256-versleuteling, op werkdagen en na meldingen</li>
 <li>Logo's per kantoor, server-side opgehaald (anders initialen)</li>
 <li>Campagnesjablonen per kantoor ingevuld in het dossier, met kopieerknoppen</li>
-<li>Volledigheidsscore, werkvoorraad en contactstatus per kantoor</li>
+<li>Volledigheidsscore, werkvoorraad en contactstatus per kantoor (uit Notion)</li>
 <li>Resultatenoverzicht zodra Mailstatus is ingevuld</li>
 </ul></section>
 <section class="hc"><h3 class="hh">Wat nog geautomatiseerd kan worden</h3><div class="ideas">
@@ -386,6 +386,7 @@ main#vRe,main#vHw{max-width:1400px;margin:0 auto;padding:20px clamp(16px,3vw,48p
 <li><b>IJS Scout</b> zoekt in rondes van ~25 kantoren en schrijft ze naar Notion (IJS Hagellijst) met status "Te controleren".</li>
 <li><b>IJS Verifier</b> controleert: bestaat het kantoor (KVK/website), heeft het een samenstelpraktijk, klopt de omvang, klopt het contact, kloppen de bronnen. Zet daarna Goedgekeurd / Goedgekeurd met correcties / Afgewezen.</li>
 <li><b>Sync</b>: de Notion-rijen worden versleuteld naar deze site gezet.</li>
+<li><b>Status bijwerken</b>: Achmed werkt alleen via BCC naar <b>g.zivanovic@mail.grokbot.com</b>. Een BCC wordt <i>Benaderd</i>, een doorgestuurd antwoord <i>Reactie ontvangen</i>. De status wordt in Notion gezet en staat na de sync op de site. Op de site zelf wijzig je niets.</li>
 </ol>
 </section>
 <section class="wcard"><h3>🔒 Privacy en AVG</h3>
@@ -403,7 +404,7 @@ const arr=v=>v==null||v===''?[]:Array.isArray(v)?v:[v];
 let D=null,ROWS=[],sortK='Prioriteit',sortD=1,F={};
 const theme=localStorage.getItem('ijs-theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=theme;
 $('theme').onclick=()=>{const t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;localStorage.setItem('ijs-theme',t)};
-async function decrypt(pw){const r=await fetch('data/hagellijst.enc?v=2026-10-12b&'+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('net');const e=await r.json();
+async function decrypt(pw){const r=await fetch('data/hagellijst.enc?v=2026-10-12c&'+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('net');const e=await r.json();
  const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(e.salt),iterations:e.iter,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
  return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(e.iv)},key,b64(e.ct))))}
@@ -428,23 +429,17 @@ const rid=r=>r.id||r.Kantoor;
 const CS=['Niet benaderd','Klaar voor contact','Benaderd','Reactie ontvangen','Gesprek gepland','Afgerond'];
 const CSC={'Niet benaderd':'cs0','Klaar voor contact':'cs1','Benaderd':'cs2','Reactie ontvangen':'cs3','Gesprek gepland':'cs4','Afgerond':'cs5'};
 const MAP={'Nog niet':'Niet benaderd','Gemaild':'Benaderd','Reactie':'Reactie ontvangen','Demo':'Gesprek gepland','Proefaccount':'Afgerond','Geen interesse':'Afgerond'};
-const LK='ijs-contactstatus';const LL=()=>{try{return JSON.parse(localStorage.getItem(LK)||'{}')}catch(e){return {}}};
+try{localStorage.removeItem('ijs-contactstatus')}catch(e){}
 const notionCs=r=>r.Contactstatus||MAP[r.Mailstatus]||'Niet benaderd';
-function cst(r){const n=notionCs(r),nd=r['Laatst benaderd']||null,l=LL()[rid(r)];
- if(l&&(l.s!==n||(l.d&&l.d!==nd)))return {s:l.s,d:l.d||nd,local:true,n};return {s:n,d:nd,local:false,n}}
-function setCs(r,s){const L=LL(),id=rid(r),old=cst(r);let d=old.d;if(['Benaderd'].includes(s)&&old.s!==s)d=new Date().toISOString().slice(0,10);
- if(s===notionCs(r)&&d===(r['Laatst benaderd']||null))delete L[id];else L[id]={s,d,t:new Date().toISOString(),k:r.Kantoor};
- localStorage.setItem(LK,JSON.stringify(L));toast(`${r.Kantoor}: ${s}`);render();if(curR&&rid(curR)===id&&$('dr').classList.contains('on'))show(curR,1)}
-const pending=()=>ROWS.filter(r=>cst(r).local);
+function cst(r){return {s:notionCs(r),d:r['Laatst benaderd']||null}}
 const fd=t=>t?new Date(t).toLocaleDateString('nl-NL',{day:'numeric',month:'short',year:'numeric'}):'';
 const CSCOL={'Niet benaderd':'var(--neu)','Klaar voor contact':'var(--acc)','Benaderd':'var(--acc)','Reactie ontvangen':'var(--warn)','Gesprek gepland':'var(--acc)','Afgerond':'var(--ok)'};
-const csb=r=>{const c=cst(r);return `${st(c.s,CSCOL[c.s])}${c.d&&c.s!=='Niet benaderd'&&c.s!=='Klaar voor contact'?`<span class="sub">${fd(c.d)}</span>`:''}${c.local?'<span class="loc" title="Lokaal gewijzigd in deze browser, nog niet in Notion">lokaal, nog niet gesynct</span>':''}`};
-function changesText(){const p=pending();return `IJS Hagellijst – contactstatus bijwerken in Notion (${p.length}):\n`+p.map(r=>{const c=cst(r);return `- ${r.Kantoor}${r.id?` [${r.id}]`:''}: Contactstatus = ${c.s}${c.d?`; Laatst benaderd = ${c.d}`:''} (was: ${c.n})`}).join('\n')}
+const csb=r=>{const c=cst(r);return `${st(c.s,CSCOL[c.s])}${c.d&&c.s!=='Niet benaderd'&&c.s!=='Klaar voor contact'?`<span class="sub">${fd(c.d)}</span>`:''}`};
 /* ---- Actie per rij ---- */
 function act(r){const v=r['Status verificatie']||'',c=cst(r).s;
  if(v==='Afgewezen')return ['Reden bekijken','ver'];if(v==='Te controleren'||!v)return ['Controleren','ver'];
  if(c==='Niet benaderd'||c==='Klaar voor contact')return ['Contact voorbereiden','con'];
- if(c==='Benaderd')return ['Reactie registreren','reac'];return ['Bekijken','com']}
+ return ['Bekijken','com']}
 const needs=r=>{const v=r['Status verificatie']||'',c=cst(r).s;return v==='Te controleren'||!v||(v.startsWith('Goedgekeurd')&&['Niet benaderd','Klaar voor contact'].includes(c))||c==='Benaderd'};let VIEW='ov';
 const actb=r=>{const [l,a]=act(r);return `<button class="ab${a==='con'||a==='ver'&&l==='Controleren'?' go':''}" data-a="${a}" data-r="${esc(rid(r))}">${l} <span aria-hidden="true">→</span></button>`};
 /* ---- Volledigheid / helpers ---- */
@@ -479,9 +474,9 @@ const INFO={Kantoor:'Officiële handelsnaam en vestigingsplaats, door IJS Scout 
  'Status verificatie':'Oordeel van IJS Verifier na controle van KVK/website, samenstelpraktijk, omvang, contact en bronnen: Te controleren, Goedgekeurd (met correcties) of Afgewezen.',
  Contactpersoon:'Beslisser (eigenaar, vennoot, directeur) of verantwoordelijke voor samenstellen of software, met functie; alleen zakelijke gegevens.',
  'E-mail':'Zakelijk e-mailadres van het kantoor of de contactpersoon, uit de website; "niet publiek gevonden" als de Verifier dat noteerde.',
- _cs:'Eén statuskolom: staat Mailstatus in Notion op Gemaild of verder, dan toont die (leidend); anders je contactstatus. Contactstatus: jouw status uit Notion (Niet benaderd t/m Afgerond); een wijziging op de site is eerst lokaal tot je hem via "Kopieer wijzigingen" laat bijwerken.',
+ _cs:'Eén statuskolom: staat Mailstatus in Notion op Gemaild of verder, dan toont die (leidend); anders je contactstatus. Contactstatus: jouw status uit Notion (Niet benaderd t/m Afgerond); wijzigt alleen in Notion (via BCC/doorgestuurde antwoorden) en verschijnt na de sync.',
  _vol:'Aantal van 11 kernvelden dat is ingevuld: klanten, software, aanleiding, contact, functie, e-mail, telefoon, website, dienstverlening, plaats en LinkedIn.',
- _act:'Voorgestelde volgende stap, afgeleid van verificatie en contactstatus: controleren, contact voorbereiden, reactie registreren of reden bekijken.',
+ _act:'Voorgestelde volgende stap, afgeleid van verificatie en contactstatus: controleren, contact voorbereiden, bekijken of reden bekijken.',
  'Geschat aantal klanten':'Schatting van het aantal klanten met bron; "schatting" als de bron zelf een schatting is.',
  'Huidige software':'Bekende jaarrekening-/samenstelsoftware, met bron (vacature, website, case of LinkedIn).',
  Website:'Hoofdwebsite van het kantoor.',Dienstverlening:'Relevante diensten van het kantoor, zoals jaarrekening samenstellen, KVK-deponering en advies.',
@@ -512,7 +507,7 @@ function convTable(title,keyFn,rows){const g={};rows.forEach(r=>arr(keyFn(r)).fo
  ks.sort((a,b)=>g[b].filter(r=>stg(r)>=1).length-g[a].filter(r=>stg(r)>=1).length);
  return `<div class="rcard"><h4>${title}</h4><table class="rt"><thead><tr><th>${title.split(' per ')[1]||''}</th><th class="num">Gemaild</th><th class="num">Reactie</th><th class="num">Klant</th><th class="num">Reactie %</th></tr></thead><tbody>${ks.map(k=>{const R=g[k],m=R.filter(r=>stg(r)>=1).length,re=R.filter(r=>stg(r)>=2).length,kl=R.filter(r=>stg(r)>=5).length;return `<tr><td>${esc(k)}</td><td class="num">${m}</td><td class="num">${re}</td><td class="num">${kl}</td><td class="num">${pct(re,m)}</td></tr>`}).join('')}</tbody></table></div>`}
 function renderRe(){const R=ROWS,m=R.filter(r=>stg(r)>=1);
- if(!m.length){$('reb').innerHTML=`<div class="rcard rempty"><div class="p1">Nog niets gemaild</div><p class="sub">Zodra je in Notion bij een kantoor <b>Mailstatus</b> op Gemaild zet (en later Reactie, Proefaccount, Demo of Klant), verschijnen hier de funnel, de conversie per aanleiding en per provincie, en de vergelijking per variant.</p><p class="sub sm">Velden: Mailstatus, Datum gemaild, Gebruikte variant, Datum laatste reactie, Resultaat notitie.</p></div>`;return}
+ if(!m.length){$('reb').innerHTML=`<div class="rcard rempty"><div class="p1">Nog niets gemaild</div><p class="sub">Zodra een BCC aan g.zivanovic@mail.grokbot.com in Notion is verwerkt (<b>Mailstatus</b> Gemaild, later Reactie, Proefaccount, Demo of Klant), verschijnen hier de funnel, de conversie per aanleiding en per provincie, en de vergelijking per variant.</p><p class="sub sm">Velden: Mailstatus, Datum gemaild, Gebruikte variant, Datum laatste reactie, Resultaat notitie.</p></div>`;return}
  const steps=['Gemaild','Reactie','Proefaccount','Demo','Klant'],n=steps.map(s=>R.filter(r=>stg(r)>=STAGE[s]).length);
  const gi=R.filter(r=>r.Mailstatus==='Geen interesse').length,max=n[0]||1;
  const fun=`<div class="rcard"><h4>Funnel</h4><div class="fun">${steps.map((s,i)=>`<div class="fs"><div class="fl"><span class="p1">${s}</span><span class="sub">${i?`${pct(n[i],n[i-1])} van vorige stap`:'alle gemailde kantoren'}</span></div><div class="fb"><i style="width:${Math.max(2,100*n[i]/max)}%"></i></div><b class="num">${n[i]}</b></div>`).join('')}</div><p class="sub" style="margin-top:10px">${st('Geen interesse','var(--neu)')} ${gi} kantoren (${pct(gi,n[0])} van gemaild), apart van de funnel.</p></div>`;
@@ -567,7 +562,6 @@ function start(d){D=d;ROWS=d.rows||[];$('login').hidden=true;$('login').style.di
  document.addEventListener('click',e=>{if(!e.target.closest('#colsm,#colsb'))$('colsm').hidden=true});
  const dens=()=>{const c=localStorage.getItem('ijs-density')==='compact';document.body.classList.toggle('compact',c);$('densb').textContent=c?'Comfortabel':'Compact';$('densb').setAttribute('aria-pressed',c)};
  $('densb').onclick=()=>{localStorage.setItem('ijs-density',localStorage.getItem('ijs-density')==='compact'?'comfort':'compact');dens()};dens();
- $('syncb').onclick=()=>{const t=changesText();navigator.clipboard.writeText(t).then(()=>toast('Gekopieerd – stuur dit naar je assistent'),()=>prompt('Kopieer deze tekst:',t))};
  let tm;$('q').oninput=()=>{clearTimeout(tm);tm=setTimeout(render,80)};render();renderWw();initSplit()}
 const SIGD=r=>r['Datum laatste signaal']||null;const isRS=r=>{const d=SIGD(r);return !!(d&&r['Laatste signaal']!==undefined||d)&&d&&(Date.now()-new Date(d).getTime())<=14*864e5};
 const nsig=r=>isRS(r)?'<span class="nsig" title="Signaal van IJS Signalen in de laatste 14 dagen">Nieuw signaal</span>':'';
@@ -603,14 +597,13 @@ const PK=[0,1,2,4,5];const kb=(i,sm)=>{const [l,n,col,k,v,s]=K[i];const on=!!(k&
  $('cl').innerHTML=rs.map(r=>{const a=arr(r.Overstapaanleiding).filter(x=>x!=='Geen bekend');return `<div class="ocard" tabindex="0" data-i="${ROWS.indexOf(r)}"><div class="top">${av(r)}<div style="flex:1;min-width:0"><b class="p1 nm1">${esc(r.Kantoor)}</b>${lic(r)}<span class="sub">${esc(r.Plaats||'–')}${nsig(r)}</span></div>${pill(r.Prioriteit)}</div><div class="meta">${badge(r['Status verificatie'])}${a.length?`<span class="tag sig">${esc(a[0])}</span>${a.length>1?`<span class="tag">+${a.length-1}</span>`:''}`:''}</div><div class="cfoot"><span class="cfl">${statc(r)}<span class="sub sm">${vol(r)}/${NV} velden</span></span>${actb(r)}</div></div>`}).join('');
  document.querySelectorAll('#tb tr,#cl .ocard').forEach(t=>{t.onclick=e=>{if(e.target.closest('a,button'))return;show(ROWS[t.dataset.i])}});
  $('es').innerHTML=rs.length?'':ROWS.length?'<div class="empty"><div class="e">🔍</div><h4>Geen kantoren gevonden</h4>Pas je zoekopdracht of filters aan.</div>':'<div class="empty"><div class="e">📭</div><h4>Nog geen kantoren</h4>IJS Scout vult de lijst; na de volgende sync verschijnen ze hier.</div>';
- const p=pending().length;$('syncb').hidden=!p;$('syncb').querySelector('span').textContent=`Kopieer wijzigingen (${p})`;
  $('cnt').textContent=`${rs.length} van ${ROWS.length} kantoren`;fit()}
 const HIDE=['Datum onderzoek','_ld','Rol','Provincie','Dienstverlening','Website','Huidige software','Geschat aantal klanten','Overstapaanleiding','Contactpersoon','_vol','Status verificatie','E-mail'];
 function fit(){const t=document.querySelector('.tbl');if(!t||!t.offsetParent)return;const tb=t.querySelector('table');t.querySelectorAll('.hid').forEach(e=>e.classList.remove('hid'));
  for(const k of HIDE){if(tb.offsetWidth<=t.clientWidth)break;t.querySelectorAll(`[data-c="${k}"]`).forEach(e=>e.classList.add('hid'))}}
 let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(fit,60)});
 document.addEventListener('click',e=>{const c=e.target.closest('.cp');if(c){e.stopPropagation();navigator.clipboard.writeText(c.dataset.c).then(()=>toast('Gekopieerd: '+c.dataset.c),()=>toast(c.dataset.c));return}
- const a=e.target.closest('.ab');if(a){e.stopPropagation();const r=ROWS.find(x=>rid(x)===a.dataset.r);if(!r)return;if(a.dataset.a==='reac'){setCs(r,'Reactie ontvangen');return}show(r,0,a.dataset.a);return}},true);
+ const a=e.target.closest('.ab');if(a){e.stopPropagation();const r=ROWS.find(x=>rid(x)===a.dataset.r);if(!r)return;show(r,0,a.dataset.a);return}},true);
 function val(k,v){if(v==null||v==='')return null;if(k==='LinkedIn')return `<span class="lid">${lic({LinkedIn:v,Kantoor:'',Contactpersoon:''})}${lnk(v)} <span class="sub">${liType(v)==='bedrijf'?'bedrijfspagina':'persoonlijk profiel'}</span></span>`;if(k==='Website')return lnk(v);
  if(k==='E-mail')return `<span class="em"><a href="mailto:${esc(v)}">${esc(v)}</a>${cp(v)}</span>`;if(k==='Telefoon')return `<a href="tel:${esc(v)}">${esc(v)}</a>${cp(v)}`;
  if(k==='Prioriteit')return pill(v);if(k==='Status verificatie')return badge(v);if(k==='Overstapaanleiding')return tags(v,'sig');if(Array.isArray(v))return tags(v);
@@ -629,15 +622,14 @@ const kvs=(r,ks)=>`<dl class="kv">${ks.map(k=>{const l=Array.isArray(k)?k[1]:k,k
 const sec=(id,t,inner)=>`<details class="sec dsec" id="sec-${id}" data-s="${id}" ${isOpen(id)?'open':''}><summary><h5>${t}</h5></summary><div class="sin">${inner}</div></details>`;
 function bodyHtml(r){const c=cst(r);
  return sec('bed','Bedrijfsgegevens',kvs(r,['Website','Plaats','Provincie','Geschat aantal klanten','Bron aantal klanten','Dienstverlening','Huidige software','Bron software']))
- +sec('con','Contactpersoon',kvs(r,['Contactpersoon','Functie','Rol','E-mail','Telefoon','LinkedIn'])+`<h5 class="sh2">Resultaat (Notion)</h5><dl class="kv"><dt>Mailstatus</dt><dd>${msN(r)?st(r.Mailstatus,MSCOL[r.Mailstatus]):'<span class="sub">Nog niet</span>'}</dd>${[['Datum gemaild',1],['Gebruikte variant'],['Datum laatste reactie',1],['Resultaat notitie']].map(([k,d])=>`<dt>${k}</dt><dd>${has(r[k])?(d?fd(r[k]):linkify(r[k])):'<span class="sub">–</span>'}</dd>`).join('')}</dl>`+`<div class="csbox"><label for="csSel" class="sub">Contactstatus</label><div class="csrow"><select id="csSel">${CS.map(s=>`<option ${s===c.s?'selected':''}>${s}</option>`).join('')}</select></div><div class="sub">Laatst benaderd: ${c.d?fd(c.d):'–'}${c.local?` · <span class="loc">lokaal, nog niet gesynct</span> (Notion: ${esc(c.n)})`:' · uit Notion'}</div></div>`)
+ +sec('con','Contactpersoon',kvs(r,['Contactpersoon','Functie','Rol','E-mail','Telefoon','LinkedIn'])+`<h5 class="sh2">Resultaat (Notion)</h5><dl class="kv"><dt>Mailstatus</dt><dd>${msN(r)?st(r.Mailstatus,MSCOL[r.Mailstatus]):'<span class="sub">Nog niet</span>'}</dd>${[['Datum gemaild',1],['Gebruikte variant'],['Datum laatste reactie',1],['Resultaat notitie']].map(([k,d])=>`<dt>${k}</dt><dd>${has(r[k])?(d?fd(r[k]):linkify(r[k])):'<span class="sub">–</span>'}</dd>`).join('')}</dl>`+`<div class="csbox"><span class="sub">Contactstatus: <b>${esc(c.s)}</b> · Laatst benaderd: ${c.d?fd(c.d):'–'} · uit Notion, bijgewerkt via BCC</span></div>`)
  +sec('ver','Verificatie',kvs(r,['Status verificatie','Opmerking verificatie','Datum onderzoek']))
  +sec('sig','Signalen',has(r['Laatste signaal'])?`<div class="sigb"><div class="bl">${isRS(r)?nsig(r):''}<span class="sub">${SIGD(r)?fd(SIGD(r)):'datum onbekend'}</span></div>${bron(r['Laatste signaal'])}</div>`:'<p class="sub">Nog geen signaal van IJS Signalen voor dit kantoor.</p>')
  +sec('com','Commerciële beoordeling',kvs(r,['Prioriteit','Overstapaanleiding','Bron aanleiding','Vervolgactie']))
  +sec('cm','Campagnemail',`<div class="cm">${campHtml(r)}</div>`)}
 function actions(r){const c=cst(r),em=r['E-mail'],[al,aa]=act(r),A=[];
- if(aa==='ver')A.push([al,()=>openSec(r,'ver')]);else if(c.s==='Benaderd')A.push(['Reactie registreren',()=>setCs(r,'Reactie ontvangen')]);else if(aa==='con'&&em)A.push(['Contact voorbereiden',()=>openSec(r,'cm')]);else A.push(['Bekijk contact',()=>openSec(r,'con')]);
+ if(aa==='ver')A.push([al,()=>openSec(r,'ver')]);else if(aa==='con'&&em)A.push(['Contact voorbereiden',()=>openSec(r,'cm')]);else A.push(['Bekijk contact',()=>openSec(r,'con')]);
  const M=[];if(em){M.push(['Kopieer e-mail',()=>navigator.clipboard.writeText(em).then(()=>toast('Gekopieerd: '+em))]);M.push(['Mail openen',()=>{location.href='mailto:'+em}])}
- if(c.s!=='Benaderd')M.push(['Markeer als benaderd',()=>setCs(r,'Benaderd')]);if(c.s!=='Reactie ontvangen')M.push(['Reactie registreren',()=>setCs(r,'Reactie ontvangen')]);if(c.s!=='Niet benaderd')M.push(['Terug naar Niet benaderd',()=>setCs(r,'Niet benaderd')]);
  M.push(['Campagnemail tonen',()=>openSec(r,'cm')],['Verificatie tonen',()=>openSec(r,'ver')]);return [A[0],M.filter(m=>m[0]!==A[0][0])]}
 function openSec(r,id){SO[id]=1;localStorage.setItem(SO_K,JSON.stringify(SO));const d=$('sec-'+id);if(d){d.open=true;d.scrollIntoView({block:'start',behavior:'smooth'});const f=d.querySelector('.cp,select,a,button');f&&f.focus({preventScroll:true})}}
 function show(r,keep,focusSec){if(!r)return;const was=$('dr').classList.contains('on');curR=r;if(!keep&&!was)lastFocus=document.activeElement;const c=cst(r);const st0=keep?$('db').scrollTop:0;
@@ -650,7 +642,7 @@ function show(r,keep,focusSec){if(!r)return;const was=$('dr').classList.contains
  $('dfmm').onclick=e=>{const b=e.target.closest('.mi');if(!b)return;$('dfmm').hidden=true;$('dfm').setAttribute('aria-expanded','false');M[+b.dataset.mi][1]()};
  $('dfmm').onkeydown=e=>{const it=[...$('dfmm').querySelectorAll('.mi')],i=it.indexOf(document.activeElement);if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();it[(i+(e.key==='ArrowDown'?1:it.length-1))%it.length].focus()}if(e.key==='Escape'){e.stopPropagation();$('dfmm').hidden=true;$('dfm').focus()}};
  $('dr').classList.add('on');$('split').classList.add('open');if(!SPLIT())$('ov').classList.add('on');document.body.classList.add('dopen');$('dr').setAttribute('aria-hidden','false');$('dx').onclick=hide;$('dback').onclick=hide;
- $('csSel').onchange=()=>setCs(r,$('csSel').value);if($('cmSel'))$('cmSel').onchange=()=>{CODE[rid(r)]=$('cmSel').value;show(r,1)};
+ if($('cmSel'))$('cmSel').onchange=()=>{CODE[rid(r)]=$('cmSel').value;show(r,1)};
  document.querySelectorAll('#tb tr').forEach(t=>{const on=ROWS[t.dataset.i]===r;t.classList.toggle('sel',on);t.setAttribute('aria-selected',on)});
  if(!was)fit();
  if(focusSec)openSec(r,{ver:'ver',con:'cm',com:'com',reac:'con'}[focusSec]||'con');else if(!keep&&!SPLIT())$('dx').focus()}
