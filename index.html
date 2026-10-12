@@ -1,5 +1,5 @@
 <!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Cache-Control" content="no-cache, max-age=0"><meta name="ijs-version" content="2026-10-12d"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer"><title>IJS Hagellijst · It's Just Software</title>
+<meta http-equiv="Cache-Control" content="no-cache, max-age=0"><meta name="ijs-version" content="2026-10-12e"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer"><title>IJS Hagellijst · It's Just Software</title>
 <link rel="icon" href="assets/logo-it.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -251,6 +251,7 @@ main#vRe,main#vHw{max-width:1400px;margin:0 auto;padding:20px clamp(16px,3vw,48p
 .fbcnt{align-self:flex-end;font-size:12px;color:#6B7280}.fbok{font-size:13px;color:#047857;font-weight:600}.fbok:empty{display:none}.fba{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
 .fbbtn{font:inherit;font-size:14px;font-weight:600;border-radius:10px;padding:10px 18px;cursor:pointer;border:1px solid #D1D5DB;background:#fff;color:#111827}.fbbtn:hover{background:#F3F4F6}.fbbtn.pri{background:#6366F1;border-color:#6366F1;color:#fff}.fbbtn.pri:hover{background:#4F46E5}.fbbtn.pri.off{background:#E5E7EB;border-color:#E5E7EB;color:#6B7280;cursor:not-allowed}
 @media(max-width:767px){.fbtab{top:auto;bottom:calc(150px + env(safe-area-inset-bottom));transform:none;padding:10px 4px;font-size:11px}.fba .fbbtn{flex:1}}
+#mkp{position:fixed;inset:0;z-index:80;background:rgba(15,20,30,.45);display:flex;align-items:center;justify-content:center;padding:16px}.mkbox{background:#fff;color:#1a1f2b;border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.3);width:100%;max-width:360px;padding:18px;display:flex;flex-direction:column;gap:8px;font-size:14px}.mkbox h4{margin:0;font-size:17px}.mks{margin:0 0 4px;color:#5b6475;font-size:12.5px;overflow-wrap:anywhere}.mko{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;width:100%;padding:11px 12px;border:1px solid #d9dde5;border-radius:10px;background:#fff;color:#1a1f2b;font:inherit;cursor:pointer;min-height:48px}.mko:hover,.mko:focus{border-color:#3b6cf6;background:#f3f6ff;outline:none}.mko.on{border-color:#3b6cf6}.mko span{font-size:12.5px;color:#5b6475}.mkr{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:13.5px;cursor:pointer}.mkr input{width:18px;height:18px}.mkbox .mkc0{align-self:flex-end}.lnk.mkw{background:none;border:0;padding:0;color:var(--acc,#3b6cf6);text-decoration:underline;font:inherit;cursor:pointer}
 </style></head><body>
 <div id="login"><form class="lbox" id="lf"><img class="logo" src="assets/logo.svg" alt="It's Just Software"><h1>Hagellijst</h1><p>Prospectoverzicht accountants- en boekhoudkantoren. Log in om de versleutelde gegevens te openen.</p>
 <div class="field"><input type="password" id="pw" placeholder="Wachtwoord" autocomplete="current-password" autofocus aria-label="Wachtwoord"></div>
@@ -404,7 +405,7 @@ const arr=v=>v==null||v===''?[]:Array.isArray(v)?v:[v];
 let D=null,ROWS=[],sortK='Prioriteit',sortD=1,F={};
 const theme=localStorage.getItem('ijs-theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.dataset.theme=theme;
 $('theme').onclick=()=>{const t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;localStorage.setItem('ijs-theme',t)};
-async function decrypt(pw){const r=await fetch('data/hagellijst.enc?v=2026-10-12d&'+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('net');const e=await r.json();
+async function decrypt(pw){const r=await fetch('data/hagellijst.enc?v=2026-10-12e&'+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('net');const e=await r.json();
  const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(e.salt),iterations:e.iter,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']);
  return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(e.iv)},key,b64(e.ct))))}
@@ -457,8 +458,24 @@ function fillT(t,r,code,orig){const v=voornaam(r);let s=t.replace(/Hoi \{voornaa
 let CODE={};
 const BCC='g.zivanovic@mail.grokbot.com';
 const mHref=(to,sub,txt)=>'mailto:'+encodeURIComponent(to||'').replace(/%40/g,'@')+'?bcc='+encodeURIComponent(BCC).replace(/%40/g,'@')+(sub?'&subject='+encodeURIComponent(sub):'')+(txt?'&body='+encodeURIComponent(String(txt).replace(/\r?\n/g,'\r\n')):'');
-const omBtn=(r,sub,txt)=>{const em=String(r['E-mail']||'').trim();return em?`<a class="btn sm pri om" href="${esc(mHref(em,sub,txt))}">Open in mail</a>`:`<button class="btn sm pri om" disabled title="Geen e-mailadres bekend">Open in mail</button>`};
-const omHint=r=>String(r['E-mail']||'').trim()?`<p class="sub sm omh">BCC naar ${BCC} staat er al in, zodat de status automatisch wordt bijgewerkt.</p>`:`<p class="sub sm omh">Geen e-mailadres bekend voor dit kantoor; kopieer de tekst en voeg het adres zelf toe (met ${BCC} in BCC).</p>`;
+const omBtn=(r,sub,txt)=>{const em=String(r['E-mail']||'').trim();return em?`<a class="btn sm pri om" href="${esc(mHref(em,sub,txt))}" data-to="${esc(em)}" data-su="${esc(sub||'')}" data-bd="${esc(txt||'')}">Open in mail</a>`:`<button class="btn sm pri om" disabled title="Geen e-mailadres bekend">Open in mail</button>`};
+
+const MK_K='ijs-mailprog';
+const gHref=(to,sub,txt)=>'https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(to||'')+'&bcc='+encodeURIComponent(BCC)+(sub?'&su='+encodeURIComponent(sub):'')+(txt?'&body='+encodeURIComponent(txt):'');
+const oHref=(to,sub,txt)=>'https://outlook.office.com/mail/deeplink/compose?to='+encodeURIComponent(to||'')+'&bcc='+encodeURIComponent(BCC)+(sub?'&subject='+encodeURIComponent(sub):'')+(txt?'&body='+encodeURIComponent(txt):'');
+window.mailUrl=(k,to,sub,txt)=>k==='gmail'?gHref(to,sub,txt):k==='outlook'?oHref(to,sub,txt):mHref(to,sub,txt);
+function goMail(k,m){const u=mailUrl(k,m.to,m.sub,m.txt);if(k==='gmail'||k==='outlook'){const w=window.open(u,'_blank');if(w){try{w.opener=null}catch(e){}}else location.href=u}else location.href=u}
+function mailChoose(m,change){const old=document.getElementById('mkp');old&&old.remove();const cur=localStorage.getItem(MK_K)||'';
+ const d=document.createElement('div');d.id='mkp';d.innerHTML=`<div class="mkbox" role="dialog" aria-modal="true" aria-labelledby="mkt"><h4 id="mkt">Waarmee wil je mailen?</h4><p class="mks">De BCC naar ${BCC} gaat altijd mee.</p>
+ ${[['mailto','Standaard mailprogramma','Outlook, Apple Mail of de mail-app van je apparaat'],['gmail','Gmail (browser)','Opent in een nieuw tabblad'],['outlook','Outlook (browser)','Outlook.com / Microsoft 365, nieuw tabblad']].map(o=>`<button type="button" class="mko${cur===o[0]?' on':''}" data-k="${o[0]}"><b>${o[1]}</b><span>${o[2]}</span></button>`).join('')}
+ <label class="mkr"><input type="checkbox" id="mkrem" checked> Onthoud mijn keuze</label><button type="button" class="btn sm mkc0">Annuleren</button></div>`;
+ document.body.appendChild(d);const close=()=>{d.remove();document.removeEventListener('keydown',esc0,true)};const esc0=e=>{if(e.key==='Escape'){e.stopPropagation();close()}};document.addEventListener('keydown',esc0,true);
+ d.addEventListener('click',e=>{if(e.target===d||e.target.closest('.mkc0'))return close();const b=e.target.closest('.mko');if(!b)return;const k=b.dataset.k;if(d.querySelector('#mkrem').checked)localStorage.setItem(MK_K,k);else localStorage.removeItem(MK_K);close();
+  if(m)goMail(k,m);else toast('Mailprogramma: '+b.querySelector('b').textContent+(d.querySelector('#mkrem').checked?' (onthouden)':''))});
+ const f=d.querySelector('.mko.on')||d.querySelector('.mko');f.focus()}
+window.openMail=(to,sub,txt)=>{const m={to,sub,txt},k=localStorage.getItem(MK_K);if(k)goMail(k,m);else mailChoose(m)};
+document.addEventListener('click',e=>{const a=e.target.closest('a.om[data-to]');if(a){e.preventDefault();openMail(a.dataset.to,a.dataset.su,a.dataset.bd);return}if(e.target.closest('.mkw')){e.preventDefault();e.stopPropagation();mailChoose(null,1)}},true);
+const omHint=r=>String(r['E-mail']||'').trim()?`<p class="sub sm omh">BCC naar ${BCC} staat er al in, zodat de status automatisch wordt bijgewerkt. <button type="button" class="lnk mkw">Mailprogramma wijzigen</button></p>`:`<p class="sub sm omh">Geen e-mailadres bekend voor dit kantoor; kopieer de tekst en voeg het adres zelf toe (met ${BCC} in BCC).</p>`;
 function camp(r){const T=TPL(),id=rid(r);
  if(r['Campagne tekst'])return {def:1,code:r['Campagne code']||'',sub:r['Campagne onderwerp']||'',txt:r['Campagne tekst']};
  const code=CODE[id]||r['Campagne code']||autoCode(r),t=T[code];if(!t)return null;return {def:0,code,sub:fillT(t.onderwerp,r,code),txt:fillT(t.tekst,r,code)}}
@@ -633,7 +650,7 @@ function bodyHtml(r){const c=cst(r);
  +sec('cm','Campagnemail',`<div class="cm">${campHtml(r)}</div>`)}
 function actions(r){const c=cst(r),em=r['E-mail'],[al,aa]=act(r),A=[];
  if(aa==='ver')A.push([al,()=>openSec(r,'ver')]);else if(aa==='con'&&em)A.push(['Contact voorbereiden',()=>openSec(r,'cm')]);else A.push(['Bekijk contact',()=>openSec(r,'con')]);
- const M=[];if(em){M.push(['Kopieer e-mail',()=>navigator.clipboard.writeText(em).then(()=>toast('Gekopieerd: '+em))]);M.push(['Mail openen',()=>{location.href=mHref(em)}])}
+ const M=[];if(em){M.push(['Kopieer e-mail',()=>navigator.clipboard.writeText(em).then(()=>toast('Gekopieerd: '+em))]);M.push(['Mail openen',()=>openMail(em,'','')])}M.push(['Mailprogramma wijzigen',()=>mailChoose(null,1)]);
  M.push(['Campagnemail tonen',()=>openSec(r,'cm')],['Verificatie tonen',()=>openSec(r,'ver')]);return [A[0],M.filter(m=>m[0]!==A[0][0])]}
 function openSec(r,id){SO[id]=1;localStorage.setItem(SO_K,JSON.stringify(SO));const d=$('sec-'+id);if(d){d.open=true;d.scrollIntoView({block:'start',behavior:'smooth'});const f=d.querySelector('.cp,select,a,button');f&&f.focus({preventScroll:true})}}
 function show(r,keep,focusSec){if(!r)return;const was=$('dr').classList.contains('on');curR=r;if(!keep&&!was)lastFocus=document.activeElement;const c=cst(r);const st0=keep?$('db').scrollTop:0;
