@@ -93,6 +93,7 @@ Past een kantoor niet op het profiel, dan komt het niet in de lijst (of wordt he
 - Placeholders: {voornaam} = eerste woord van de contactnaam, alleen als dat een persoonsnaam is (anders aanhef "Goedendag,"); {kantoor}; {aanleiding} = één neutrale zin op basis van het signaal (leeg als er geen signaal is).
 - Opvolgmails FU5-1 en FU12-1 staan inklapbaar eronder. Kopieerknoppen voor onderwerp, tekst en "Kopieer alles". De site verstuurt niets.
 - Bron sjablonen: Notion-pagina "IJS Campagne-concepten". Bij elke sync haalt de agent die op (notion-fetch → private/campagne-concepten.md); parse_templates.py maakt private/templates.json, die versleuteld in de payload gaat. LinkedIn-posts worden niet meegenomen.
+- De notion-fetch-tekst is JSON-geëscaped (`\"`, `\n`, `\\{`). parse_templates.py zet dat sinds 13-10-2026 zelf terug, zodat placeholders als {voornaam} echt worden ingevuld (daarvoor bleven ze als `\{voornaam\}` in het concept staan).
 - Kolomkoppen en filterlabels hebben een i-icoon met uitleg (hover, focus of tik; Esc sluit).
 
 ## 📡 Signalen (IJS Signalen)

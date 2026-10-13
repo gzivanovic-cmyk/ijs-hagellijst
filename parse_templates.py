@@ -6,6 +6,10 @@ import re,json,os,sys
 SRC='private/campagne-concepten.md';OUT='private/templates.json'
 if not os.path.exists(SRC): print('Geen campagne-concepten.md, sjablonen ongewijzigd');sys.exit(0)
 md=open(SRC,encoding='utf8').read()
+# notion-fetch levert JSON-geëscapete tekst (\\" \\n \\\\{). Is dat zo opgeslagen, dan eerst terugzetten,
+# anders blijven placeholders als \\{voornaam\\} staan en worden ze niet ingevuld.
+if '\\"' in md or '\\\\{' in md:
+    md=md.replace('\\\\','\x00').replace('\\"','"').replace('\\t','\t').replace('\\n','\n').replace('\x00','\\')
 md=md.split('## 4.')[0]
 def clean(s):
     s=s.replace('\\{','{').replace('\\}','}').replace('\\[','[').replace('\\]',']')
