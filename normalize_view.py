@@ -13,10 +13,12 @@ OUT = 'private/hagellijst.json'
 old = {}
 if os.path.exists(OUT):
     old = {r.get('id'): r for r in json.load(open(OUT)).get('results', [])}
+BR = re.compile(r'\s*<br\s*/?>\s*', re.I)
 MDLINK = re.compile(r'\[([^\]]*)\]\((?:[^()]|\([^()]*\))*\)')
 def plain(v):
     # view-modus geeft Markdown terug: [tekst](url) -> tekst, \X -> X
     if not isinstance(v, str): return v
+    v = BR.sub(' | ', v)  # <br>, <br/>, <br /> -> ' | ' (zelfde scheiding als de andere rijen)
     v = MDLINK.sub(lambda m: m.group(1), v)
     return re.sub(r'\\([\\`*_{}\[\]()#+\-.!|:<>~=$&])', r'\1', v)
 rows, seen = [], set()

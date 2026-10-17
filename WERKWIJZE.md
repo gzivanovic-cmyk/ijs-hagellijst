@@ -69,6 +69,7 @@ Past een kantoor niet op het profiel, dan komt het niet in de lijst (of wordt he
 - De rijen komen uit de opgeslagen weergave **"Default view"** van IJS Hagellijst: `view://31deaab4-e04b-4381-bd3d-a2bdff5ac9f7` (database https://app.notion.com/p/a35522cf5dd2464ea351a5435872ceba, data source `collection://a079827b-1782-4eca-975f-37a02b20761f`). Die view heeft geen filters en toont alle kolommen.
 - Ophalen met `notion-query-data-sources` in **view-modus** (`page_size` 100, pagineren met `next_cursor` tot `has_more` false is). View-modus heeft geen eigen query-limiet; de oude SQL-methode liep steeds tegen `usage_limit_reached`.
 - `normalize_view.py` zet de pagina's om naar `private/hagellijst.json` in het vaste formaat (Markdown-links terug naar tekst). Daarna `./sync.sh`.
+- Sinds 17-10-2026 vervangt `normalize_view.py` ook elke `<br>`, `<br/>` en `<br />` (hoofdletterongevoelig) in tekstvelden door ` | `, dezelfde scheiding als in de andere rijen. Zo verschijnt er geen ruwe HTML meer in bv. Opmerking verificatie.
 - Wordt ook de view-modus geblokkeerd, dan wordt er niets gepusht en volgt een melding.
 
 ## 🔒 Privacy en AVG
