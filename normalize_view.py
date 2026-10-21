@@ -18,6 +18,7 @@ MDLINK = re.compile(r'\[([^\]]*)\]\((?:[^()]|\([^()]*\))*\)')
 def plain(v):
     # view-modus geeft Markdown terug: [tekst](url) -> tekst, \X -> X
     if not isinstance(v, str): return v
+    if re.search(r'</?p>', v): v = re.sub(r'\s*</?p>\s*', ' ', v).strip()  # Notion-HTML-alinea's weg
     v = BR.sub(' | ', v)  # <br>, <br/>, <br /> -> ' | ' (zelfde scheiding als de andere rijen)
     v = MDLINK.sub(lambda m: m.group(1), v)
     return re.sub(r'\\([\\`*_{}\[\]()#+\-.!|:<>~=$&])', r'\1', v)

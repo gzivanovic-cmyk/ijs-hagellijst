@@ -11,6 +11,8 @@ md=open(SRC,encoding='utf8').read()
 if '\\"' in md or '\\\\{' in md:
     md=md.replace('\\\\','\x00').replace('\\"','"').replace('\\t','\t').replace('\\n','\n').replace('\x00','\\')
 md=md.split('## 4.')[0]
+# Notion levert soms HTML-opmaak (<b>, <i>, <strong>, <em>) i.p.v. Markdown: omzetten naar Markdown.
+md=re.sub(r'</?(b|strong)>','**',md);md=re.sub(r'</?(i|em)>','*',md)
 def clean(s):
     s=s.replace('\\{','{').replace('\\}','}').replace('\\[','[').replace('\\]',']')
     s=re.sub(r'\[([^\]]+)\]\(([^)]+)\)',lambda m:m[1] if m[1].startswith('http') or m[2].startswith('mailto') and '@' in m[1] else m[1],s)
