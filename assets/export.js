@@ -8,6 +8,17 @@ const COLS=[
 ['Plaats','Plaats','t',16,'Vestigingsplaats.'],
 ['Prioriteit','Prioriteit','p',11,'Kans: A = sterkste kans, B = goede kans, C = profiel past.'],
 ['_status','Status','t',18,'Contactstatus: Mailstatus uit Notion, anders de contactstatus.'],
+['Bron','Bron','t',22,'Herkomst: Alleen hagellijst, Uit IJS-lijst (nieuw uit de eigen IJS-prospectlijst) of Aangevuld met IJS-info. IJS-relaties niet koud mailen.'],
+['IJS status','IJS status','w',30,'Status van de lopende relatie volgens de IJS-lijst.'],
+['IJS volgende actie','IJS volgende actie','w',30,'Volgende actie volgens de IJS-lijst.'],
+['IJS laatste gesprek','IJS laatste gesprek','d',14,'Datum laatste gesprek volgens de IJS-lijst.'],
+['IJS wie','IJS wie','t',9,'Wie bij IJS de relatie heeft (initialen).'],
+['IJS demo','IJS demo','d',14,'Datum demo volgens de IJS-lijst.'],
+['IJS klant/kans','IJS klant/kans','t',13,'Klant of kans volgens de IJS-lijst (Ja, Nee, Potentieel).'],
+['IJS prioriteit','IJS prioriteit','t',12,'Prioriteit volgens de IJS-lijst (Hoog, Midden, Laag).'],
+['IJS software','IJS software','t',18,'Software volgens de IJS-lijst.'],
+['IJS opmerking','IJS opmerking','w',40,'Opmerking / context uit de IJS-lijst.'],
+['Info uit IJS-lijst','Info uit IJS-lijst','w',45,'Welke velden uit de IJS-lijst komen of zijn aangevuld, en twijfelgevallen.'],
 ['Contactpersoon','Contactpersoon','t',22,'Naam van de beslisser of contactpersoon.'],
 ['E-mail','E-mailadres','t',30,'E-mailadres van het kantoor of de contactpersoon.'],
 ['Telefoon','Telefoonnummer','t',16,'Telefoonnummer.'],
@@ -48,13 +59,13 @@ function make(rows,opt){opt=opt||{};const st=opt.status||(r=>r.Mailstatus||r.Con
  const known=new Set(COLS.map(c=>c[0])),extra=[];
  rows.forEach(r=>Object.keys(r).forEach(k=>{if(k[0]!=='_'&&!known.has(k)&&!extra.includes(k))extra.push(k)}));
  const C=COLS.concat(extra.map(k=>[k,k,'t',20,'Overig veld uit Notion.']));
- const body=rows.map((r,i)=>{const a=i%2===1;return C.map(([k,,t])=>{const v=k==='_status'?st(r):r[k];
+ const body=rows.map((r,i)=>{const a=i%2===1;return C.map(([k,,t])=>{const v=k==='_status'?st(r):k==='Bron'?(r.Bron||'Alleen hagellijst'):r[k];
   if(t==='p'){const p=String(txt(v)).trim().toUpperCase().charAt(0);return{v:txt(v),s:{A:7,B:8,C:9}[p]||(a?4:0)}}
   if(t==='d'&&isDate(v))return{v,d:true,s:a?5:2};
   if(t==='n'&&v!==''&&v!=null&&!isNaN(+v))return{v:+v,s:a?4:0};
   return{v:txt(v),s:t==='w'?(a?6:3):(a?4:0)}})});
  const now=opt.now||new Date(),ymd=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
- const info=[[{v:'Exportdatum',s:10},{v:ymd,d:true,s:2}],[{v:'Aantal kantoren',s:10},rows.length],[{v:'Inhoud',s:10},{v:opt.selectie?'Huidige selectie (tab, filters en zoekopdracht)':'Alles (de hele lijst)',s:3}],[{v:'Bron',s:10},{v:'IJS Hagellijst (Notion), alleen gegevens verzamelen voor It\'s Just Software.',s:3}],['',''],[{v:'Kolom',s:10},{v:'Uitleg',s:10}],...C.map(c=>[c[1],{v:c[4],s:3}])];
+ const info=[[{v:'Exportdatum',s:10},{v:ymd,d:true,s:2}],[{v:'Aantal kantoren',s:10},rows.length],[{v:'Inhoud',s:10},{v:opt.selectie?'Huidige selectie (tab, filters en zoekopdracht)':'Alles (de hele lijst)',s:3}],[{v:'Bron',s:10},{v:'IJS Hagellijst (Notion), alleen gegevens verzamelen voor It\'s Just Software.',s:3}],[{v:'Let op',s:10},{v:'Kantoren met Bron "Uit IJS-lijst" of "Aangevuld met IJS-info" zijn lopende IJS-relaties: niet als koude prospect mailen.',s:3}],['',''],[{v:'Kolom',s:10},{v:'Uitleg',s:10}],...C.map(c=>[c[1],{v:c[4],s:3}])];
  const blob=g.XLSXLite.build([
   {name:'Kantoren',headers:C.map(c=>c[1]),rows:body,widths:C.map(c=>c[3]),filter:true,freeze:true},
   {name:'Info',headers:['Info',''],rows:info,widths:[24,80],filter:false,freeze:false}]);

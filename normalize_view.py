@@ -6,8 +6,9 @@ KEYS = ['Bron aanleiding','Bron aantal klanten','Bron software','Campagne code',
  'Contactpersoon','Contactstatus','Dienstverlening','E-mail','Functie','Gebruikte variant','Geschat aantal klanten',
  'Huidige software','Kantoor','Laatste signaal','LinkedIn','Mailstatus','Opmerking verificatie','Overstapaanleiding',
  'Plaats','Prioriteit','Provincie','Resultaat notitie','Rol','Status verificatie','Telefoon','Vervolgactie','Website',
- 'createdTime','id','url']
-for d in ['Datum gemaild','Datum laatste reactie','Datum laatste signaal','Datum onderzoek','Laatst benaderd']:
+ 'createdTime','id','url',
+ 'Bron','IJS status','IJS volgende actie','IJS wie','IJS klant/kans','IJS opmerking','IJS prioriteit','IJS software','Info uit IJS-lijst']
+for d in ['Datum gemaild','Datum laatste reactie','Datum laatste signaal','Datum onderzoek','Laatst benaderd','IJS laatste gesprek','IJS demo']:
     KEYS += [f'date:{d}:start', f'date:{d}:end', f'date:{d}:is_datetime']
 OUT = 'private/hagellijst.json'
 old = {}
